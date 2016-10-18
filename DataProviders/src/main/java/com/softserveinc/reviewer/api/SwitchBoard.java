@@ -1,33 +1,15 @@
 package com.softserveinc.reviewer.api;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public class SwitchBoard {
+    private List<FriendRelation> data;
 
-    private long destinationClientId;
-    private long sourceClientId;
-
-    public SwitchBoard(long destinationClientId, long sourceClientId) {
-        this.destinationClientId = destinationClientId;
-        this.sourceClientId = sourceClientId;
+    public List<FriendRelation> getData() {
+        return data;
     }
 
-    @JsonProperty
-    public Long getDestinationClientId() {
-        return destinationClientId;
+    public void setData(List<FriendRelation> data) {
+        this.data = data;
     }
-
-    public void setDestinationClientId(long destinationClientId) {
-        this.destinationClientId = destinationClientId;
-    }
-
-    @JsonProperty
-    public Long getSourceClientId() {
-        return sourceClientId;
-    }
-
-    public void setSourceClientId(long sourceClientId) {
-        this.sourceClientId = sourceClientId;
-    }
-
 }
