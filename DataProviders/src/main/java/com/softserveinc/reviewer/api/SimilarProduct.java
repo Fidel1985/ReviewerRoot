@@ -7,6 +7,11 @@ public class SimilarProduct {
     private String client;
     private String externalId;
 
+    public SimilarProduct(String client, String externalId) {
+        this.client = client;
+        this.externalId = externalId;
+    }
+
     public String getClient() {
         return client;
     }

@@ -27,8 +27,8 @@ public class SwitchBoardResource {
     }
 
     @GET
-    @Path("/{destinationClientId}")
-    public Response getSwitchBoard(@PathParam("destinationClientId") String destinationClientId) {
+    @Path("/{destinationClientID}")
+    public Response getSwitchBoard(@PathParam("destinationClientID") String destinationClientId) {
 
         List<FriendRelation> friendRelations = switchBoardService.getSwitchBoardByDestinationClientId(destinationClientId);
         if(friendRelations.isEmpty()) {
