@@ -1,6 +1,6 @@
-package com.softserveinc.reviewer.api;
+package com.softserveinc.reviewer.model;
 
-public class SubjectProduct {
+public class Product {
     private String externalId;
 
     public String getExternalId() {

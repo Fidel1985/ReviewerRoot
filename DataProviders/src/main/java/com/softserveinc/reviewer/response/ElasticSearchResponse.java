@@ -1,8 +1,10 @@
-package com.softserveinc.reviewer.api;
+package com.softserveinc.reviewer.response;
+
+import com.softserveinc.reviewer.model.Review;
 
 import java.util.List;
 
-public class Elastic {
+public class ElasticSearchResponse {
     private List<Review> reviews;
 
     public List<Review> getReviews() {

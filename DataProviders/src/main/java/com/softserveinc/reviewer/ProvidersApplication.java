@@ -2,9 +2,7 @@ package com.softserveinc.reviewer;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.softserveinc.reviewer.api.Elastic;
-import com.softserveinc.reviewer.api.Oracle;
-import com.softserveinc.reviewer.resources.ElasticResource;
+import com.softserveinc.reviewer.resources.ElasticSearchResource;
 import com.softserveinc.reviewer.resources.OracleResource;
 import com.softserveinc.reviewer.resources.SwitchBoardResource;
 import io.dropwizard.Application;
@@ -33,7 +31,7 @@ public class ProvidersApplication extends Application<ProvidersConfiguration> {
         Injector injector = Guice.createInjector();
         environment.jersey().register(injector.getInstance(SwitchBoardResource.class));
         environment.jersey().register(injector.getInstance(OracleResource.class));
-        environment.jersey().register(injector.getInstance(ElasticResource.class));
+        environment.jersey().register(injector.getInstance(ElasticSearchResource.class));
     }
 
 }

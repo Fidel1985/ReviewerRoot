@@ -1,8 +1,8 @@
-package com.softserveinc.reviewer.api;
+package com.softserveinc.reviewer.model;
 
 public class Review {
     private String client;
-    private SubjectProduct subjectProduct;
+    private Product subjectProduct;
     private String submissionTime;
     private String text;
     private String title;
@@ -16,11 +16,11 @@ public class Review {
         this.client = client;
     }
 
-    public SubjectProduct getSubjectProduct() {
+    public Product getSubjectProduct() {
         return subjectProduct;
     }
 
-    public void setSubjectProduct(SubjectProduct subjectProduct) {
+    public void setSubjectProduct(Product subjectProduct) {
         this.subjectProduct = subjectProduct;
     }
 

@@ -1,4 +1,4 @@
-package com.softserveinc.reviewer.api;
+package com.softserveinc.reviewer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
