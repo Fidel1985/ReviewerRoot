@@ -2,7 +2,7 @@ package com.softserveinc.reviewer.model;
 
 public class Review {
     private String client;
-    private Product subjectProduct;
+    private Product product;
     private String submissionTime;
     private String text;
     private String title;
@@ -16,12 +16,12 @@ public class Review {
         this.client = client;
     }
 
-    public Product getSubjectProduct() {
-        return subjectProduct;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setSubjectProduct(Product subjectProduct) {
-        this.subjectProduct = subjectProduct;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public String getSubmissionTime() {
