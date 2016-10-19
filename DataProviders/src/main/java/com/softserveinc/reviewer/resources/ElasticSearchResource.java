@@ -21,8 +21,8 @@ public class ElasticSearchResource {
     }
 
     @GET
-    public Response getOracle(@QueryParam("type") String type, @QueryParam("client") String destinationClientId,
-                              @QueryParam("subjectProduct.externalId") String productId) {
+    public Response getReviews(@QueryParam("type") String type, @QueryParam("client") String destinationClientId,
+                               @QueryParam("subjectProduct.externalId") String productId) {
 
         List<Review> reviews = elasticSearchService.getReviews(type, destinationClientId, productId);
         if(reviews.isEmpty()) {

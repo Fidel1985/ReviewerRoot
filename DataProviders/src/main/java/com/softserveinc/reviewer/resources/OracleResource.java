@@ -28,7 +28,7 @@ public class OracleResource {
 
     @GET
     @Path("/{clientID}/{productID}/sources")
-    public Response getOracle(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
+    public Response getSourceMatches(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
 
         List<ProductMatch> products = oracleService.getMatches(clientId, productId);
         if(products.isEmpty()) {
