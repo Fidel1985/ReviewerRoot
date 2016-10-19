@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.codahale.metrics.annotation.Timed;
-import com.softserveinc.reviewer.api.Saying;
+import com.softserveinc.reviewer.model.Saying;
 
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)

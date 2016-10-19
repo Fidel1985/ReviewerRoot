@@ -9,32 +9,31 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.softserveinc.reviewer.api.FriendRelation;
-import com.softserveinc.reviewer.api.SwitchBoard;
-import com.softserveinc.reviewer.service.SwitchBoardService;
+import com.softserveinc.reviewer.model.Syndication;
+import com.softserveinc.reviewer.response.SwitchBoardResponse;
+import com.softserveinc.reviewer.service.SyndicationService;
 
-@Path("/edges/to")
+@Path("/edges")
 @Produces(MediaType.APPLICATION_JSON)
 public class SwitchBoardResource {
 
-    private static final SwitchBoard SWITCH_BOARD = new SwitchBoard();
+    private static final SwitchBoardResponse SWITCH_BOARD_RESPONSE = new SwitchBoardResponse();
 
-    private final SwitchBoardService switchBoardService;
+    private final SyndicationService syndicationService;
 
     @Inject
-    public SwitchBoardResource(SwitchBoardService switchBoardService) {
-        this.switchBoardService = switchBoardService;
+    public SwitchBoardResource(SyndicationService syndicationService) {
+        this.syndicationService = syndicationService;
     }
 
     @GET
-    @Path("/{destinationClientID}")
-    public Response getSwitchBoard(@PathParam("destinationClientID") String destinationClientId) {
-
-        List<FriendRelation> friendRelations = switchBoardService.getSwitchBoardByDestinationClientId(destinationClientId);
-        if(friendRelations.isEmpty()) {
+    @Path("/to/{destinationClientID}")
+    public Response getSources(@PathParam("destinationClientID") String destinationClientId) {
+        List<Syndication> syndications = syndicationService.getSources(destinationClientId);
+        if(syndications.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        SWITCH_BOARD.setData(friendRelations);
-        return Response.ok(SWITCH_BOARD).build();
+        SWITCH_BOARD_RESPONSE.setData(syndications);
+        return Response.ok(SWITCH_BOARD_RESPONSE).build();
     }
 }

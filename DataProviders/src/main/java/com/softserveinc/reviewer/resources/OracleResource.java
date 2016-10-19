@@ -1,8 +1,8 @@
 package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
-import com.softserveinc.reviewer.api.Oracle;
-import com.softserveinc.reviewer.api.SimilarProduct;
+import com.softserveinc.reviewer.response.OracleResponse;
+import com.softserveinc.reviewer.model.ProductMatch;
 import com.softserveinc.reviewer.service.OracleService;
 
 import javax.ws.rs.GET;
@@ -17,7 +17,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class OracleResource {
 
-    private static final Oracle ORACLE = new Oracle();
+    private static final OracleResponse ORACLE_RESPONSE = new OracleResponse();
 
     private final OracleService oracleService;
 
@@ -28,14 +28,14 @@ public class OracleResource {
 
     @GET
     @Path("/{clientID}/{productID}/sources")
-    public Response getOracle(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
+    public Response getSourceMatches(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
 
-        List<SimilarProduct> products = oracleService.getSimilarProductsByIds(clientId, productId);
+        List<ProductMatch> products = oracleService.getMatches(clientId, productId);
         if(products.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        ORACLE.setProducts(products);
-        return Response.ok(ORACLE).build();
+        ORACLE_RESPONSE.setProducts(products);
+        return Response.ok(ORACLE_RESPONSE).build();
     }
 
 }
