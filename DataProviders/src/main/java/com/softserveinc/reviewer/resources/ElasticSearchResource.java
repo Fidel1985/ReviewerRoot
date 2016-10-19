@@ -13,7 +13,6 @@ import java.util.List;
 @Path("/explore")
 @Produces(MediaType.APPLICATION_JSON)
 public class ElasticSearchResource {
-    private static final ElasticSearchResponse ELASTIC_SEARCH_RESPONSE = new ElasticSearchResponse();
 
     private final ElasticSearchService elasticSearchService;
 
@@ -30,7 +29,6 @@ public class ElasticSearchResource {
         if(reviews.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        ELASTIC_SEARCH_RESPONSE.setReviews(reviews);
-        return Response.ok(ELASTIC_SEARCH_RESPONSE).build();
+        return Response.ok(reviews).build();
     }
 }

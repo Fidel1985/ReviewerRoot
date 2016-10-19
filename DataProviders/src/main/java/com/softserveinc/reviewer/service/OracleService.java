@@ -10,16 +10,18 @@ import com.softserveinc.reviewer.model.Product;
 
 public class OracleService {
 
-    private static final List<Product> CHAIR_MATCHES = Arrays.asList(new Product("oak-style", "oak-sc-2ft"),
-            new Product("sitcom", "2000234"), new Product("sitcom", "1000212"), new Product("sitcom", "1000205"),
-            new Product("sitcom", "1000224"), new Product("just-plastic", "1000204"));
-
-    private static final List<Product> TABLE_MATCHES = Arrays.asList(new Product("oak-style", "oak-dwt-40inc"),
-            new Product("table-next", "wooden-table"), new Product("table-next", "metal-table"), new Product("table-next", "plastic-table-rnd"),
-            new Product("table-next", "plastic-table-sqr"), new Product("besttable", "plNewWood"), new Product("besttable", "roundPlastic"),
-            new Product("besttable", "1000203"));
-
-    private static final Collection<List<Product>> MATCHES = Arrays.asList(CHAIR_MATCHES, TABLE_MATCHES);
+    private static final Collection<List<Product>> MATCHES = Arrays.asList(
+            //plastic tables(yellow)
+            Arrays.asList(new Product("besttable", "roundPlastic"), new Product("table-next", "plastic-table-rnd"),
+                    new Product("table-next", "plastic-table-sqr"), new Product("just-plastic", "1000203")),
+            //wooden tables(blue)
+            Arrays.asList(new Product("table-next", "wooden-table"), new Product("oak-style", "oak-dwt-40inc"),
+                    new Product("besttable", "plNewWood")),
+            //plastic chairs(green)
+            Arrays.asList(new Product("sitcom", "1000224"), new Product("just-plastic", "1000204")),
+            //soft chairs(red)
+            Arrays.asList(new Product("oak-style", "oak-sc-2ft"), new Product("sitcom", "1000212"))
+    );
 
     public List<Product> getMatches(String clientId, String productId) {
 
