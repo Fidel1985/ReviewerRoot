@@ -2,7 +2,7 @@ package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
 import com.softserveinc.reviewer.response.OracleResponse;
-import com.softserveinc.reviewer.model.ProductMatch;
+import com.softserveinc.reviewer.model.Product;
 import com.softserveinc.reviewer.service.OracleService;
 
 import javax.ws.rs.GET;
@@ -30,7 +30,7 @@ public class OracleResource {
     @Path("/{clientID}/{productID}/sources")
     public Response getSourceMatches(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
 
-        List<ProductMatch> products = oracleService.getMatches(clientId, productId);
+        List<Product> products = oracleService.getMatches(clientId, productId);
         if(products.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

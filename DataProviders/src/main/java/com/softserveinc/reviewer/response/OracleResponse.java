@@ -1,17 +1,17 @@
 package com.softserveinc.reviewer.response;
 
-import com.softserveinc.reviewer.model.ProductMatch;
+import com.softserveinc.reviewer.model.Product;
 
 import java.util.List;
 
 public class OracleResponse {
-    private List<ProductMatch> products;
+    private List<Product> products;
 
-    public List<ProductMatch> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ProductMatch> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 }
