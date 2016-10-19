@@ -5,11 +5,11 @@ package com.softserveinc.reviewer.model;
  */
 public class ProductMatch {
     private String client;
-    private String product;
+    private String externalId;
 
-    public ProductMatch(String client, String product) {
+    public ProductMatch(String client, String externalId) {
         this.client = client;
-        this.product = product;
+        this.externalId = externalId;
     }
 
     public String getClient() {
@@ -20,11 +20,11 @@ public class ProductMatch {
         this.client = client;
     }
 
-    public String getProduct() {
-        return product;
+    public String getExternalId() {
+        return externalId;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 }

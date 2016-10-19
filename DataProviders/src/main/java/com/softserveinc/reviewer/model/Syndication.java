@@ -13,8 +13,7 @@ public class Syndication {
         this.sourceClient = sourceClient;
     }
 
-    //@JsonProperty
-    public String getDestinationClient() {
+        public String getDestinationClient() {
         return destinationClient;
     }
 
@@ -22,7 +21,6 @@ public class Syndication {
         this.destinationClient = destinationClient;
     }
 
-    //@JsonProperty
     public String getSourceClient() {
         return sourceClient;
     }

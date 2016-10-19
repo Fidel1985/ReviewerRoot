@@ -8,10 +8,11 @@ import com.softserveinc.reviewer.model.Syndication;
 
 public class SyndicationService {
 
-    private static final List<Syndication> SYNDICATIONS = Arrays.asList(new Syndication("1", "1"), new Syndication("1", "2"), new Syndication("1", "3"),
-            new Syndication("2", "1"), new Syndication("2", "3"), new Syndication("3", "2"));
+    private static final List<Syndication> SYNDICATIONS = Arrays.asList(new Syndication("oak-style", "table-next"),
+            new Syndication("oak-style", "table-next"), new Syndication("table-next", "besttable"), new Syndication("sitcom", "oak-style"),
+            new Syndication("besttable", "table-next"));
 
-    public List<Syndication> getSources(String clientId) {
-        return SYNDICATIONS.stream().filter(x -> x.getDestinationClient().equals(clientId)).collect(Collectors.toList());
+    public List<Syndication> getSources(String destinationClient) {
+        return SYNDICATIONS.stream().filter(x -> x.getDestinationClient().equals(destinationClient)).collect(Collectors.toList());
     }
 }

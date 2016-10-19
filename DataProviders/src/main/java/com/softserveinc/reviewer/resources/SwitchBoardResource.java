@@ -27,9 +27,9 @@ public class SwitchBoardResource {
     }
 
     @GET
-    @Path("/to/{destinationClientID}")
-    public Response getSources(@PathParam("destinationClientID") String destinationClientId) {
-        List<Syndication> syndications = syndicationService.getSources(destinationClientId);
+    @Path("/to/{destinationClient}")
+    public Response getSources(@PathParam("destinationClient") String destinationClient) {
+        List<Syndication> syndications = syndicationService.getSources(destinationClient);
         if(syndications.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
