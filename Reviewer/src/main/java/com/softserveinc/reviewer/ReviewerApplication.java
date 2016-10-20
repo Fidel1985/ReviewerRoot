@@ -1,6 +1,8 @@
 package com.softserveinc.reviewer;
 
-import com.softserveinc.reviewer.health.TemplateHealthCheck;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.softserveinc.reviewer.health.ReviewerHealthCheck;
 import com.softserveinc.reviewer.resources.ReviewerResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -23,16 +25,10 @@ public class ReviewerApplication extends Application<ReviewerConfiguration> {
     }
 
     @Override
-    public void run(final ReviewerConfiguration configuration,
-                    final Environment environment) {
-        final ReviewerResource resource = new ReviewerResource(
-                configuration.getTemplate(),
-                configuration.getDefaultName()
-        );
-        final TemplateHealthCheck healthCheck =
-                new TemplateHealthCheck(configuration.getTemplate());
-        environment.healthChecks().register("template", healthCheck);
-        environment.jersey().register(resource);
+    public void run(final ReviewerConfiguration configuration, final Environment environment) {
+        Injector injector = Guice.createInjector();
+        environment.healthChecks().register("SyndicationHealthCheck", injector.getInstance(ReviewerHealthCheck.class));
+        environment.jersey().register(injector.getInstance(ReviewerResource.class));
     }
 
 }

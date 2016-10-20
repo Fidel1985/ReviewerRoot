@@ -1,7 +1,5 @@
 package com.softserveinc.reviewer.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class Review {
     private String client;
     private Product subjectProduct;

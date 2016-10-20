@@ -5,6 +5,3 @@ server:
   adminConnectors:
   - type: http
     port: 8083
-
-template: Hello, %s!
-defaultName: Stranger

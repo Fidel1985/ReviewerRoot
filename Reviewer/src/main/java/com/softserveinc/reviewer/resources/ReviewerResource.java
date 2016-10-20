@@ -2,32 +2,33 @@ package com.softserveinc.reviewer.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
+import javax.ws.rs.core.Response;
 
-import com.codahale.metrics.annotation.Timed;
-import com.softserveinc.reviewer.model.Saying;
+import com.google.inject.Inject;
+import com.softserveinc.reviewer.model.ReviewResult;
+import com.softserveinc.reviewer.service.ReviewerService;
 
-@Path("/hello-world")
+@Path("/product")
 @Produces(MediaType.APPLICATION_JSON)
 public class ReviewerResource {
-    private final String template;
-    private final String defaultName;
-    private final AtomicLong counter;
+    private final ReviewerService reviewerService;
 
-    public ReviewerResource(String template, String defaultName) {
-        this.template = template;
-        this.defaultName = defaultName;
-        this.counter = new AtomicLong();
+    @Inject
+    public ReviewerResource(ReviewerService reviewerService) {
+        this.reviewerService = reviewerService;
     }
 
     @GET
-    @Timed
-    public Saying sayHello(@QueryParam("name") Optional<String> name) {
-        final String value = String.format(template, name.orElse(defaultName));
-        return new Saying(counter.incrementAndGet(), value);
+    @Path("/{clientID}/{productID}")
+    public Response getEffectiveSourceMatches(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
+
+        ReviewResult result = reviewerService.getMatches(clientId, productId);
+        if(result == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(result).build();
     }
 }

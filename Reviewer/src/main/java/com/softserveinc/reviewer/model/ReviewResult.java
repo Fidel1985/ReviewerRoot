@@ -6,6 +6,16 @@ public class ReviewResult {
     private long overall;
     private long syndicated;
 
+    public ReviewResult() {
+    }
+
+    public ReviewResult(String client, String externalId, long overall, long syndicated) {
+        this.client = client;
+        this.externalId = externalId;
+        this.overall = overall;
+        this.syndicated = syndicated;
+    }
+
     public String getClient() {
         return client;
     }
