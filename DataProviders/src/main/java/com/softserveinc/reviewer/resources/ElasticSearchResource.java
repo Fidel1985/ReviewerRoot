@@ -1,7 +1,6 @@
 package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
-import com.softserveinc.reviewer.response.ElasticSearchResponse;
 import com.softserveinc.reviewer.model.Review;
 import com.softserveinc.reviewer.service.ElasticSearchService;
 

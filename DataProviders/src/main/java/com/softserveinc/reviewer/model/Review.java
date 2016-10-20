@@ -2,6 +2,7 @@ package com.softserveinc.reviewer.model;
 
 public class Review {
     private String client;
+    private transient String externalId;
     private ReviewProduct subjectProduct;
     private String submissionTime;
     private String text;
@@ -12,9 +13,10 @@ public class Review {
         // Jackson deserialization
     }
 
-    public Review(String client, ReviewProduct subjectProduct, String submissionTime, String text, String title, String type) {
+    public Review(String client, String externalId, String submissionTime, String text, String title, String type) {
         this.client = client;
-        this.subjectProduct = subjectProduct;
+        this.externalId = externalId;
+        this.subjectProduct = new ReviewProduct(externalId);
         this.submissionTime = submissionTime;
         this.text = text;
         this.title = title;
@@ -27,6 +29,14 @@ public class Review {
 
     public void setClient(String client) {
         this.client = client;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public ReviewProduct getSubjectProduct() {
@@ -67,5 +77,21 @@ public class Review {
 
     public void setType(String type) {
         this.type = type;
+    }
+}
+
+class ReviewProduct {
+    private String externalId;
+
+    ReviewProduct(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 }
