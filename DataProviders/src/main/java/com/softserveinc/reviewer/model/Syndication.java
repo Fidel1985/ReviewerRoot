@@ -8,6 +8,10 @@ public class Syndication {
     private String destinationClient;
     private String sourceClient;
 
+    public Syndication() {
+        // Jackson deserialization
+    }
+
     public Syndication(String destinationClient, String sourceClient) {
         this.destinationClient = destinationClient;
         this.sourceClient = sourceClient;

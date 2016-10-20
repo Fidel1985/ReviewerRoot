@@ -8,6 +8,10 @@ public class Review {
     private String title;
     private String type;
 
+    public Review() {
+        // Jackson deserialization
+    }
+
     public Review(String client, ReviewProduct subjectProduct, String submissionTime, String text, String title, String type) {
         this.client = client;
         this.subjectProduct = subjectProduct;

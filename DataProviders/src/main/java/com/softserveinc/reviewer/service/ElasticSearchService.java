@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 public class ElasticSearchService {
 
-    //private static final String TYPE_REVIEW = "review";
     private static final List<Review> REVIEWS = Arrays.asList(
             new Review("oak-style", new ReviewProduct("oak-sc-2ft"), "2016-07-18T17:00:43.000Z",
                     "Quisque varius tortor vitae augue laoreet euismod aliquet metus vulputate. Duis tempor tristique dolor, ut venenatis enim " +

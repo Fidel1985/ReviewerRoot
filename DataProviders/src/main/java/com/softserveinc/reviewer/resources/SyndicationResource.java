@@ -10,19 +10,19 @@ import java.util.List;
 
 import com.google.inject.Inject;
 import com.softserveinc.reviewer.model.Syndication;
-import com.softserveinc.reviewer.response.SwitchBoardResponse;
+import com.softserveinc.reviewer.response.SyndicationResponse;
 import com.softserveinc.reviewer.service.SyndicationService;
 
 @Path("/edges")
 @Produces(MediaType.APPLICATION_JSON)
-public class SwitchBoardResource {
+public class SyndicationResource {
 
-    private static final SwitchBoardResponse SWITCH_BOARD_RESPONSE = new SwitchBoardResponse();
+    private static final SyndicationResponse SWITCH_BOARD_RESPONSE = new SyndicationResponse();
 
     private final SyndicationService syndicationService;
 
     @Inject
-    public SwitchBoardResource(SyndicationService syndicationService) {
+    public SyndicationResource(SyndicationService syndicationService) {
         this.syndicationService = syndicationService;
     }
 

@@ -10,8 +10,9 @@ public class SyndicationService {
 
     private static final List<Syndication> SYNDICATIONS = Arrays.asList(
             new Syndication("table-next", "besttable"), new Syndication("table-next", "oak-style"),
-            new Syndication("besttable", "table-next"), new Syndication("oak-style", "sitcom"),
-            new Syndication("oak-style", "besttable"), new Syndication("sitcom", "just-plastic"),
+            new Syndication("besttable", "table-next"),
+            new Syndication("oak-style", "sitcom"), new Syndication("oak-style", "besttable"),
+            new Syndication("sitcom", "just-plastic"),
             new Syndication("just-plastic", "sitcom")
             );
 

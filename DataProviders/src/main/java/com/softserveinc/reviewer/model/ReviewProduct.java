@@ -3,6 +3,10 @@ package com.softserveinc.reviewer.model;
 public class ReviewProduct {
     private String externalId;
 
+    public ReviewProduct() {
+
+    }
+
     public ReviewProduct(String externalId) {
         this.externalId = externalId;
     }

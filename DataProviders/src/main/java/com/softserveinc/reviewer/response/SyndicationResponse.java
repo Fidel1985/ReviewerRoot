@@ -4,7 +4,7 @@ import com.softserveinc.reviewer.model.Syndication;
 
 import java.util.List;
 
-public class SwitchBoardResponse {
+public class SyndicationResponse {
     private List<Syndication> data;
 
     public List<Syndication> getData() {
