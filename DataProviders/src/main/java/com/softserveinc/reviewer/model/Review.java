@@ -1,9 +1,10 @@
 package com.softserveinc.reviewer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Review {
     private String client;
-    private transient String externalId;
-    private ReviewProduct subjectProduct;
+    private Product subjectProduct;
     private String submissionTime;
     private String text;
     private String title;
@@ -15,8 +16,7 @@ public class Review {
 
     public Review(String client, String externalId, String submissionTime, String text, String title, String type) {
         this.client = client;
-        this.externalId = externalId;
-        this.subjectProduct = new ReviewProduct(externalId);
+        this.subjectProduct = new Product(externalId);
         this.submissionTime = submissionTime;
         this.text = text;
         this.title = title;
@@ -32,18 +32,14 @@ public class Review {
     }
 
     public String getExternalId() {
-        return externalId;
+        return subjectProduct == null ? null : subjectProduct.externalId;
     }
 
-    public void setExternalId(String externalId) {
-        this.externalId = externalId;
-    }
-
-    public ReviewProduct getSubjectProduct() {
+    public Product getSubjectProduct() {
         return subjectProduct;
     }
 
-    public void setSubjectProduct(ReviewProduct subjectProduct) {
+    public void setSubjectProduct(Product subjectProduct) {
         this.subjectProduct = subjectProduct;
     }
 
@@ -78,20 +74,20 @@ public class Review {
     public void setType(String type) {
         this.type = type;
     }
-}
 
-class ReviewProduct {
-    private String externalId;
+    private class Product {
+        private String externalId;
 
-    ReviewProduct(String externalId) {
-        this.externalId = externalId;
-    }
+        Product(String externalId) {
+            this.externalId = externalId;
+        }
 
-    public String getExternalId() {
-        return externalId;
-    }
+        public String getExternalId() {
+            return externalId;
+        }
 
-    public void setExternalId(String externalId) {
-        this.externalId = externalId;
+        public void setExternalId(String externalId) {
+            this.externalId = externalId;
+        }
     }
 }

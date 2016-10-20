@@ -8,14 +8,6 @@ import java.util.List;
 
 public class ElasticSearchService {
 
-/*    private static final List<List<Review>> REVIEWS_COLLECTION = Arrays.asList(
-            new Review[5], new ArrayList<Review>(12), new ArrayList<Review>(3),
-            new ArrayList<Review>(76), new ArrayList<Review>(321), new ArrayList<Review>(175), new ArrayList<Review>(221),
-            new ArrayList<Review>(51), new ArrayList<Review>(23), new ArrayList<Review>(17), new ArrayList<Review>(93),
-            new ArrayList<Review>(341), new ArrayList<Review>(321),
-            new ArrayList<Review>(56), new ArrayList<Review>(23), new ArrayList<Review>(72), new ArrayList<Review>(35)
-    );*/
-
     private static final List<Review[]> REVIEWS_LIST = Arrays.asList(
             new Review[5], new Review[12], new Review[3],
             new Review[76], new Review[321], new Review[175], new Review[221],
@@ -49,12 +41,6 @@ public class ElasticSearchService {
         REVIEWS_LIST.get(0)[0] = REVIEWS.get(0);
         REVIEWS_LIST.get(3)[0] = REVIEWS.get(1);
     }
-
-/*    public List<Review> getReviews(String type, String client, String externalId) {
-
-        return REVIEWS.stream().filter(x ->  x.getExternalId().equals(externalId) && x.getClient().equals(client) &&
-                x.getType().equals(type)).collect(Collectors.toList());
-    }*/
 
     public List<Review> getReviews(String type, String client, String externalId) {
 
