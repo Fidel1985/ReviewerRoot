@@ -1,5 +1,7 @@
 package com.softserveinc.reviewer.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ReviewResult {
     private String client;
     private String externalId;
@@ -32,6 +34,7 @@ public class ReviewResult {
         this.externalId = externalId;
     }
 
+    @JsonProperty("native")
     public long getOverall() {
         return overall;
     }

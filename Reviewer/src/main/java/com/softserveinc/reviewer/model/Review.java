@@ -1,5 +1,7 @@
 package com.softserveinc.reviewer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Review {
     private String client;
     private Product subjectProduct;
@@ -29,6 +31,7 @@ public class Review {
         this.client = client;
     }
 
+    @JsonIgnore
     public String getExternalId() {
         return subjectProduct == null ? null : subjectProduct.externalId;
     }
@@ -75,6 +78,8 @@ public class Review {
 
     private class Product {
         private String externalId;
+
+        public Product() {}
 
         Product(String externalId) {
             this.externalId = externalId;

@@ -29,6 +29,13 @@ public class ElasticSearchService {
                             "quam tortor et urna. Integer nisl libero, euismod at commodo ut, sodales nec magna. Maecenas facilisis turpis " +
                             "id enim sollicitudin at dictum mauris commodo. Phasellus ut lectus eget turpis molestie vulputate. " +
                             "Praesent vel fringilla est. Ut tristique mollis magna, et pretium lacus aliquam quis.",
+                    "Pellentesque habitant morbi tristique", "review"),
+            new Review("besttable", "plNewWood", "2016-09-29T17:00:43.000Z",
+                    "Proin eget malesuada ipsum. Maecenas purus arcu, imperdiet nec venenatis in, aliquet quis mauris. Donec in nulla erat, " +
+                            "eget vehicula purus. Nulla varius, lacus id eleifend placerat, magna tortor accumsan quam, sit amet viverra " +
+                            "quam tortor et urna. Integer nisl libero, euismod at commodo ut, sodales nec magna. Maecenas facilisis turpis " +
+                            "id enim sollicitudin at dictum mauris commodo. Phasellus ut lectus eget turpis molestie vulputate. " +
+                            "Praesent vel fringilla est. Ut tristique mollis magna, et pretium lacus aliquam quis.",
                     "Pellentesque habitant morbi tristique", "review")
     );
 
@@ -40,6 +47,7 @@ public class ElasticSearchService {
         }
         REVIEWS_LIST.get(0)[0] = REVIEWS.get(0);
         REVIEWS_LIST.get(3)[0] = REVIEWS.get(1);
+        REVIEWS_LIST.get(11)[0] = REVIEWS.get(2);
     }
 
     public List<Review> getReviews(String type, String client, String externalId) {

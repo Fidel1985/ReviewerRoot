@@ -1,5 +1,6 @@
 package com.softserveinc.reviewer;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -37,6 +38,7 @@ public class ReviewerApplication extends Application<ReviewerConfiguration> {
             @Override
             protected void configure() {
                 bind(ReviewerConfiguration.class).toInstance(configuration);
+                //bind(ObjectMapper.class).to(ObjectMapper.class);
             }
         });
     }
