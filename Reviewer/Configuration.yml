@@ -5,3 +5,12 @@ server:
   adminConnectors:
   - type: http
     port: 8083
+
+syndicationBaseUrl: http://localhost:8084
+syndicationUri: /edges/to
+
+oracleBaseUrl: http://localhost:8084
+oracleUri: /product/%s/%s/sources
+
+elasticSearchBaseUrl: http://localhost:8084
+elasticSearchUri: /explore

@@ -25,7 +25,7 @@ public class ReviewerResource {
     @Path("/{clientID}/{productID}")
     public Response getEffectiveSourceMatches(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
 
-        ReviewResult result = reviewerService.getMatches(clientId, productId);
+        ReviewResult result = reviewerService.getSyndicationMatches(clientId, productId);
         if(result == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
