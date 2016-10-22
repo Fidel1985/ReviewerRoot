@@ -7,9 +7,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 import com.google.inject.Inject;
+import com.softesrveinc.reviwer.model.Product;
 import com.softserveinc.reviewer.ReviewerConfiguration;
-import com.softserveinc.reviewer.model.Product;
-import com.softserveinc.reviewer.response.OracleResponse;
+import com.softesrveinc.reviwer.response.OracleResponse;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class OracleService {

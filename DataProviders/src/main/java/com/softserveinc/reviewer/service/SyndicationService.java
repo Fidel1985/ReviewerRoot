@@ -1,10 +1,10 @@
 package com.softserveinc.reviewer.service;
 
+import com.softesrveinc.reviwer.model.Syndication;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.softserveinc.reviewer.model.Syndication;
 
 public class SyndicationService {
 

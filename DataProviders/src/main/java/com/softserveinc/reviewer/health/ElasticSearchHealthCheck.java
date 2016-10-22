@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
-import com.softserveinc.reviewer.model.Review;
+import com.softesrveinc.reviwer.model.Review;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class ElasticSearchHealthCheck extends HealthCheck {

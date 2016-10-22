@@ -9,8 +9,8 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.softserveinc.reviewer.model.Syndication;
-import com.softserveinc.reviewer.response.SyndicationResponse;
+import com.softesrveinc.reviwer.model.Syndication;
+import com.softesrveinc.reviwer.response.SyndicationResponse;
 import com.softserveinc.reviewer.service.SyndicationService;
 
 @Path("/edges")

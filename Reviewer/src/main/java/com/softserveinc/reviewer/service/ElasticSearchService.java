@@ -10,8 +10,8 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
+import com.softesrveinc.reviwer.model.Review;
 import com.softserveinc.reviewer.ReviewerConfiguration;
-import com.softserveinc.reviewer.model.Review;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class ElasticSearchService {

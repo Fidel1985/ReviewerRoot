@@ -1,4 +1,4 @@
-package com.softserveinc.reviewer.model;
+package com.softesrveinc.reviwer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

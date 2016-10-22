@@ -1,8 +1,8 @@
-package com.softserveinc.reviewer.response;
+package com.softesrveinc.reviwer.response;
+
+import com.softesrveinc.reviwer.model.Product;
 
 import java.util.List;
-
-import com.softserveinc.reviewer.model.Product;
 
 public class OracleResponse {
     private List<Product> products;

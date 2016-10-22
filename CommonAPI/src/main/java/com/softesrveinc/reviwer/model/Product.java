@@ -1,4 +1,4 @@
-package com.softserveinc.reviewer.model;
+package com.softesrveinc.reviwer.model;
 
 public class Product {
     private String client;

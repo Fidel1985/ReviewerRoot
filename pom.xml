@@ -8,9 +8,11 @@
     <artifactId>reviewer-root</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>Root</name>
     <modules>
         <module>Reviewer</module>
         <module>DataProviders</module>
+        <module>CommonAPI</module>
     </modules>
 
 

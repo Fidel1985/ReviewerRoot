@@ -7,9 +7,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 import com.google.inject.Inject;
+import com.softesrveinc.reviwer.model.Syndication;
 import com.softserveinc.reviewer.ReviewerConfiguration;
-import com.softserveinc.reviewer.model.Syndication;
-import com.softserveinc.reviewer.response.SyndicationResponse;
+import com.softesrveinc.reviwer.response.SyndicationResponse;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class SyndicationService {

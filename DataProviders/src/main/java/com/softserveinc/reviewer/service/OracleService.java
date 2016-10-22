@@ -1,12 +1,12 @@
 package com.softserveinc.reviewer.service;
 
+import com.softesrveinc.reviwer.model.Product;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.softserveinc.reviewer.model.Product;
 
 public class OracleService {
 

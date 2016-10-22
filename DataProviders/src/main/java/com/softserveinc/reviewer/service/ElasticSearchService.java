@@ -1,6 +1,8 @@
 package com.softserveinc.reviewer.service;
 
-import com.softserveinc.reviewer.model.Review;
+
+
+import com.softesrveinc.reviwer.model.Review;
 
 import java.util.ArrayList;
 import java.util.Arrays;

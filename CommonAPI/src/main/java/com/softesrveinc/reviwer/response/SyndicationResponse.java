@@ -1,6 +1,6 @@
-package com.softserveinc.reviewer.response;
+package com.softesrveinc.reviwer.response;
 
-import com.softserveinc.reviewer.model.Syndication;
+import com.softesrveinc.reviwer.model.Syndication;
 
 import java.util.List;
 
