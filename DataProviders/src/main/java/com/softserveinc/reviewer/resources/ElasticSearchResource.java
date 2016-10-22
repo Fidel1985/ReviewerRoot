@@ -2,6 +2,7 @@ package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
 import com.softesrveinc.reviwer.model.Review;
+import com.softesrveinc.reviwer.response.ElasticSearchResponse;
 import com.softserveinc.reviewer.service.ElasticSearchService;
 
 import javax.ws.rs.*;
@@ -12,6 +13,8 @@ import java.util.List;
 @Path("/explore")
 @Produces(MediaType.APPLICATION_JSON)
 public class ElasticSearchResource {
+
+    private static final ElasticSearchResponse ELASTIC_SEARCH_RESPONSE = new ElasticSearchResponse();
 
     private final ElasticSearchService elasticSearchService;
 
@@ -28,6 +31,7 @@ public class ElasticSearchResource {
         if(reviews.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(reviews).build();
+        ELASTIC_SEARCH_RESPONSE.setHits(reviews);
+        return Response.ok(ELASTIC_SEARCH_RESPONSE).build();
     }
 }

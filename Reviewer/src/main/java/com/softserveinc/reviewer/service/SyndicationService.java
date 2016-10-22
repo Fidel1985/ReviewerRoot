@@ -4,6 +4,7 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -27,6 +28,11 @@ public class SyndicationService {
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
         SyndicationResponse syndicationResponse = response.readEntity(SyndicationResponse.class);
-        return syndicationResponse.getData();
+        if(syndicationResponse != null && syndicationResponse.getData() != null) {
+            return syndicationResponse.getData();
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 }

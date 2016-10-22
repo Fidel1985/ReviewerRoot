@@ -7,10 +7,10 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.softesrveinc.reviwer.model.Review;
+import com.softesrveinc.reviwer.response.ElasticSearchResponse;
 import com.softserveinc.reviewer.ReviewerConfiguration;
 import org.glassfish.jersey.client.JerseyClient;
 
@@ -31,9 +31,13 @@ public class ElasticSearchService {
                 queryParam("type", "review").queryParam("client", destinationClientId).queryParam("subjectProduct.externalId", productId);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
-        List<Review> reviews = objectMapper.convertValue(response.readEntity(ArrayList.class), new TypeReference<List<Review>>() {});
-
-        return reviews != null ? reviews : new ArrayList<>();
+        ElasticSearchResponse elasticSearchResponse = response.readEntity(ElasticSearchResponse.class);
+        if(elasticSearchResponse != null && elasticSearchResponse.getHits() != null) {
+            return elasticSearchResponse.getHits();
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 
 }

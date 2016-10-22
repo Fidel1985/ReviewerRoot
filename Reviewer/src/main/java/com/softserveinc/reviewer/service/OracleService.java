@@ -4,6 +4,7 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -28,6 +29,11 @@ public class OracleService {
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
         OracleResponse oracleResponse = response.readEntity(OracleResponse.class);
-        return oracleResponse.getProducts();
+        if(oracleResponse != null && oracleResponse.getProducts() != null) {
+            return oracleResponse.getProducts();
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 }
