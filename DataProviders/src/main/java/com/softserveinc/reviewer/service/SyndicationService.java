@@ -1,6 +1,6 @@
 package com.softserveinc.reviewer.service;
 
-import com.softesrveinc.reviwer.model.Syndication;
+import com.softesrveinc.reviewer.model.Syndication;
 
 import java.util.Arrays;
 import java.util.List;

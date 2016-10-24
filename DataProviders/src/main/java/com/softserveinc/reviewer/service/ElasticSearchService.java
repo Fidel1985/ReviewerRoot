@@ -2,7 +2,7 @@ package com.softserveinc.reviewer.service;
 
 
 
-import com.softesrveinc.reviwer.model.Review;
+import com.softesrveinc.reviewer.model.Review;
 
 import java.util.ArrayList;
 import java.util.Arrays;

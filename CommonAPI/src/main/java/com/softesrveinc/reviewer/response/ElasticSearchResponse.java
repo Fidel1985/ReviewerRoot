@@ -1,6 +1,6 @@
-package com.softesrveinc.reviwer.response;
+package com.softesrveinc.reviewer.response;
 
-import com.softesrveinc.reviwer.model.Review;
+import com.softesrveinc.reviewer.model.Review;
 
 import java.util.List;
 

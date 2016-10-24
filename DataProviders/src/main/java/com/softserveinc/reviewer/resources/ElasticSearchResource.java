@@ -1,8 +1,8 @@
 package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
-import com.softesrveinc.reviwer.model.Review;
-import com.softesrveinc.reviwer.response.ElasticSearchResponse;
+import com.softesrveinc.reviewer.model.Review;
+import com.softesrveinc.reviewer.response.ElasticSearchResponse;
 import com.softserveinc.reviewer.service.ElasticSearchService;
 
 import javax.ws.rs.*;

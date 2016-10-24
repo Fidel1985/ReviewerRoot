@@ -7,23 +7,20 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
-import com.softesrveinc.reviwer.model.Review;
-import com.softesrveinc.reviwer.response.ElasticSearchResponse;
+import com.softesrveinc.reviewer.model.Review;
+import com.softesrveinc.reviewer.response.ElasticSearchResponse;
 import com.softserveinc.reviewer.ReviewerConfiguration;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class ElasticSearchService {
     private final ReviewerConfiguration configuration;
     private final JerseyClient client;
-    private final ObjectMapper objectMapper;
 
     @Inject
-    public ElasticSearchService(ReviewerConfiguration configuration, JerseyClient client, ObjectMapper objectMapper) {
+    public ElasticSearchService(ReviewerConfiguration configuration, JerseyClient client) {
         this.configuration = configuration;
         this.client = client;
-        this.objectMapper = objectMapper;
     }
 
     public List<Review> getReviews(String destinationClientId, String productId) {
