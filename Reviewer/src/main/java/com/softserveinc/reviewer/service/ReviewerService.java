@@ -32,9 +32,8 @@ public class ReviewerService {
         List<Product> products = oracleService.getSourceMatches(client, externalId);
         List<Product> syndicatedProducts = products.stream().filter(x -> sourceClients.contains(x.getClient())).collect(Collectors.toList());
 
-        List<Review> reviews = new ArrayList<>();
+        List<Review> reviews = elasticSearchService.getReviews(client, externalId);
         List<Review> syndicatedReviews = new ArrayList<>();
-        products.forEach(x -> reviews.addAll(elasticSearchService.getReviews(x.getClient(), x.getExternalId())));
         syndicatedProducts.forEach(x -> syndicatedReviews.addAll(elasticSearchService.getReviews(x.getClient(), x.getExternalId())));
 
         return new ReviewResult(client, externalId, reviews.size(), syndicatedReviews.size());
