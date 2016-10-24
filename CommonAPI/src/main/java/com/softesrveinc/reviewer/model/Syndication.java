@@ -1,33 +1,14 @@
 package com.softesrveinc.reviewer.model;
 
-public class Syndication {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Syndication {
     private String destinationClient;
     private String sourceClient;
-
-    public Syndication() {
-        // Jackson deserialization
-    }
-
-    public Syndication(String destinationClient, String sourceClient) {
-        this.destinationClient = destinationClient;
-        this.sourceClient = sourceClient;
-    }
-
-        public String getDestinationClient() {
-        return destinationClient;
-    }
-
-    public void setDestinationClient(String destinationClient) {
-        this.destinationClient = destinationClient;
-    }
-
-    public String getSourceClient() {
-        return sourceClient;
-    }
-
-    public void setSourceClient(String sourceClient) {
-        this.sourceClient = sourceClient;
-    }
 
 }

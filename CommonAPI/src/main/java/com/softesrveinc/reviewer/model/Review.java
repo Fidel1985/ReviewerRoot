@@ -1,7 +1,12 @@
 package com.softesrveinc.reviewer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 public class Review {
     private String client;
     private Product subjectProduct;
@@ -9,10 +14,6 @@ public class Review {
     private String text;
     private String title;
     private String type;
-
-    public Review() {
-        // Jackson deserialization
-    }
 
     public Review(String client, String externalId, String submissionTime, String text, String title, String type) {
         this.client = client;
@@ -23,74 +24,16 @@ public class Review {
         this.type = type;
     }
 
-    public String getClient() {
-        return client;
-    }
-
-    public void setClient(String client) {
-        this.client = client;
-    }
-
     @JsonIgnore
     public String getExternalId() {
         return subjectProduct == null ? null : subjectProduct.externalId;
     }
 
-    public Product getSubjectProduct() {
-        return subjectProduct;
-    }
-
-    public void setSubjectProduct(Product subjectProduct) {
-        this.subjectProduct = subjectProduct;
-    }
-
-    public String getSubmissionTime() {
-        return submissionTime;
-    }
-
-    public void setSubmissionTime(String submissionTime) {
-        this.submissionTime = submissionTime;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    @Getter
+    @AllArgsConstructor(suppressConstructorProperties = true)
+    @NoArgsConstructor
     private class Product {
         private String externalId;
-
-        public Product() {}
-
-        Product(String externalId) {
-            this.externalId = externalId;
-        }
-
-        public String getExternalId() {
-            return externalId;
-        }
-
-        public void setExternalId(String externalId) {
-            this.externalId = externalId;
-        }
     }
+
 }
