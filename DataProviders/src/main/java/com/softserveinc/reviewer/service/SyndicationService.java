@@ -1,6 +1,7 @@
 package com.softserveinc.reviewer.service;
 
 import com.softesrveinc.reviewer.model.Syndication;
+import com.softesrveinc.reviewer.response.SyndicationResponse;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,9 @@ public class SyndicationService {
             new Syndication("just-plastic", "sitcom")
             );
 
-    public List<Syndication> getSources(String destinationClient) {
-        return SYNDICATIONS.stream().filter(x -> x.getDestinationClient().equals(destinationClient)).collect(Collectors.toList());
+    public SyndicationResponse getSources(String destinationClient) {
+        List<Syndication> syndications = SYNDICATIONS.stream().filter(x -> x.getDestinationClient().
+                equals(destinationClient)).collect(Collectors.toList());
+        return new SyndicationResponse(syndications);
     }
 }

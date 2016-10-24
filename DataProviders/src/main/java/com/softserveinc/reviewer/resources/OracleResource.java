@@ -2,7 +2,6 @@ package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
 
-import com.softesrveinc.reviewer.model.Product;
 import com.softesrveinc.reviewer.response.OracleResponse;
 import com.softserveinc.reviewer.service.OracleService;
 
@@ -12,13 +11,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @Path("/product")
 @Produces(MediaType.APPLICATION_JSON)
 public class OracleResource {
-
-    private static final OracleResponse ORACLE_RESPONSE = new OracleResponse();
 
     private final OracleService oracleService;
 
@@ -31,12 +27,11 @@ public class OracleResource {
     @Path("/{clientID}/{productID}/sources")
     public Response getSourceMatches(@PathParam("clientID") String clientId, @PathParam("productID") String productId) {
 
-        List<Product> products = oracleService.getMatches(clientId, productId);
-        if(products.isEmpty()) {
+        OracleResponse response = oracleService.getMatches(clientId, productId);
+        if(response.getProducts().isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        ORACLE_RESPONSE.setProducts(products);
-        return Response.ok(ORACLE_RESPONSE).build();
+        return Response.ok(response).build();
     }
 
 }

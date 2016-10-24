@@ -1,10 +1,8 @@
 package com.softserveinc.reviewer.service;
 
-
-
 import com.softesrveinc.reviewer.model.Review;
+import com.softesrveinc.reviewer.response.ElasticSearchResponse;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,15 +50,15 @@ public class ElasticSearchService {
         REVIEWS_LIST.get(11)[0] = REVIEWS.get(2);
     }
 
-    public List<Review> getReviews(String type, String client, String externalId) {
+    public ElasticSearchResponse getReviews(String type, String client, String externalId) {
 
         for (Review[] reviews : REVIEWS_LIST) {
             if(reviews != null && validateReviewFieldsNotNull(reviews[0]) && reviews[0].getExternalId().equals(externalId) &&
                     reviews[0].getClient().equals(client) && reviews[0].getType().equals(type)) {
-                return Arrays.asList(reviews);
+                return new ElasticSearchResponse(Arrays.asList(reviews));
             }
         }
-        return new ArrayList<>();
+        return null;
     }
 
     private boolean validateReviewFieldsNotNull(Review review) {

@@ -1,6 +1,7 @@
 package com.softserveinc.reviewer.service;
 
 import com.softesrveinc.reviewer.model.Product;
+import com.softesrveinc.reviewer.response.OracleResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,10 +24,9 @@ public class OracleService {
             Arrays.asList(new Product("oak-style", "oak-sc-2ft"), new Product("sitcom", "1000212"))
     );
 
-    public List<Product> getMatches(String clientId, String productId) {
+    public OracleResponse getMatches(String clientId, String productId) {
 
         List<Product> productMatches = new ArrayList<>();
-
         for (List<Product> products: MATCHES) {
             if (products.stream().anyMatch(x -> x.getClient().equals(clientId) && x.getExternalId().equals(productId))){
                 List<Product> productsExcludedClientItself = products.stream().filter(x -> !x.getClient().equals(clientId)).
@@ -34,6 +34,6 @@ public class OracleService {
                 productMatches.addAll(productsExcludedClientItself);
             }
         }
-        return productMatches;
+        return new OracleResponse(productMatches);
     }
 }
