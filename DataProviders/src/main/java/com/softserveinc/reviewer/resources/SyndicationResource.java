@@ -7,7 +7,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import java.util.List;
+
 import com.google.inject.Inject;
+import com.softesrveinc.reviewer.model.Syndication;
 import com.softesrveinc.reviewer.response.SyndicationResponse;
 import com.softserveinc.reviewer.service.SyndicationService;
 
@@ -25,10 +28,10 @@ public class SyndicationResource {
     @GET
     @Path("/to/{destinationClient}")
     public Response getSources(@PathParam("destinationClient") String destinationClient) {
-        SyndicationResponse response = syndicationService.getSources(destinationClient);
-        if(response.getData().isEmpty()) {
+        List<Syndication> syndications = syndicationService.getSources(destinationClient);
+        if(syndications.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(response).build();
+        return Response.ok(new SyndicationResponse(syndications)).build();
     }
 }

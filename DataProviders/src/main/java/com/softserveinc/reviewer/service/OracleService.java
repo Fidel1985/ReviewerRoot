@@ -1,7 +1,6 @@
 package com.softserveinc.reviewer.service;
 
 import com.softesrveinc.reviewer.model.Product;
-import com.softesrveinc.reviewer.response.OracleResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +23,7 @@ public class OracleService {
             Arrays.asList(new Product("oak-style", "oak-sc-2ft"), new Product("sitcom", "1000212"))
     );
 
-    public OracleResponse getMatches(String clientId, String productId) {
+    public List<Product> getMatches(String clientId, String productId) {
 
         List<Product> productMatches = new ArrayList<>();
         for (List<Product> products: MATCHES) {
@@ -34,6 +33,6 @@ public class OracleService {
                 productMatches.addAll(productsExcludedClientItself);
             }
         }
-        return new OracleResponse(productMatches);
+        return productMatches;
     }
 }

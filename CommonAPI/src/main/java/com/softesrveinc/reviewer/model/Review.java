@@ -30,10 +30,13 @@ public class Review {
     }
 
     @Getter
-    @AllArgsConstructor(suppressConstructorProperties = true)
     @NoArgsConstructor
     private class Product {
         private String externalId;
+
+        public Product(String externalId) {
+            this.externalId = externalId;
+        }
     }
 
 }
