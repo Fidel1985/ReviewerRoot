@@ -1,9 +1,9 @@
 package com.softserveinc.reviewer;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.softserveinc.reviewer.health.ReviewerHealthCheck;
+import com.softserveinc.reviewer.injector.GuiceModule;
 import com.softserveinc.reviewer.resources.ReviewerResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
@@ -21,17 +21,9 @@ public class ReviewerApplication extends Application<ReviewerConfiguration> {
 
     @Override
     public void run(final ReviewerConfiguration configuration, final Environment environment) {
-        Injector injector = createInjector(configuration);
+        Injector injector = Guice.createInjector(new GuiceModule(configuration));
         environment.healthChecks().register("ReviewerHealthCheck", injector.getInstance(ReviewerHealthCheck.class));
         environment.jersey().register(injector.getInstance(ReviewerResource.class));
     }
 
-    private Injector createInjector(final ReviewerConfiguration configuration) {
-        return Guice.createInjector(new AbstractModule() {
-            @Override
-            protected void configure() {
-                bind(ReviewerConfiguration.class).toInstance(configuration);
-            }
-        });
-    }
 }

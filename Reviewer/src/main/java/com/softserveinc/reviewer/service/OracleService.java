@@ -9,23 +9,26 @@ import java.util.List;
 
 import com.google.inject.Inject;
 import com.softesrveinc.reviewer.model.Product;
-import com.softserveinc.reviewer.ReviewerConfiguration;
 import com.softesrveinc.reviewer.response.OracleResponse;
+import com.softserveinc.reviewer.annotation.OracleBaseUrl;
+import com.softserveinc.reviewer.annotation.OracleUri;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class OracleService {
-    private final ReviewerConfiguration configuration;
     private final JerseyClient client;
+    private final String oracleBaseUrl;
+    private final String oracleUri;
 
     @Inject
-    public OracleService(ReviewerConfiguration configuration, JerseyClient client) {
-        this.configuration = configuration;
+    public OracleService(JerseyClient client, @OracleBaseUrl String oracleBaseUrl, @OracleUri String oracleUri) {
         this.client = client;
+        this.oracleBaseUrl = oracleBaseUrl;
+        this.oracleUri = oracleUri;
     }
 
     public List<Product> getSourceMatches(String clientId, String productId) {
-        String formattedUri = String.format(configuration.getOracleUri(), clientId, productId);
-        WebTarget webTarget = client.target(configuration.getOracleBaseUrl()).path(formattedUri);
+        String formattedUri = String.format(oracleUri, clientId, productId);
+        WebTarget webTarget = client.target(oracleBaseUrl).path(formattedUri);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
         OracleResponse oracleResponse = response.readEntity(OracleResponse.class);

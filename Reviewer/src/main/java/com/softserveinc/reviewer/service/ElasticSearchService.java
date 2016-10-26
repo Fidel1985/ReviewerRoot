@@ -10,21 +10,25 @@ import java.util.List;
 import com.google.inject.Inject;
 import com.softesrveinc.reviewer.model.Review;
 import com.softesrveinc.reviewer.response.ElasticSearchResponse;
-import com.softserveinc.reviewer.ReviewerConfiguration;
+import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
+import com.softserveinc.reviewer.annotation.ElasticSearchUri;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class ElasticSearchService {
-    private final ReviewerConfiguration configuration;
     private final JerseyClient client;
+    private final String elasticSearchBaseUrl;
+    private final String elasticSearchUri;
 
     @Inject
-    public ElasticSearchService(ReviewerConfiguration configuration, JerseyClient client) {
-        this.configuration = configuration;
+    public ElasticSearchService(JerseyClient client, @ElasticSearchBaseUrl String elasticSearchBaseUrl,
+            @ElasticSearchUri String elasticSearchUri) {
         this.client = client;
+        this.elasticSearchBaseUrl = elasticSearchBaseUrl;
+        this.elasticSearchUri = elasticSearchUri;
     }
 
     public List<Review> getReviews(String destinationClientId, String productId) {
-        WebTarget webTarget = client.target(configuration.getElasticSearchBaseUrl()).path(configuration.getElasticSearchUri()).
+        WebTarget webTarget = client.target(elasticSearchBaseUrl).path(elasticSearchUri).
                 queryParam("type", "review").queryParam("client", destinationClientId).queryParam("subjectProduct.externalId", productId);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
