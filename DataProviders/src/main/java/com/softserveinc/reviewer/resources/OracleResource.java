@@ -2,8 +2,8 @@ package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
 
-import com.softesrveinc.reviwer.model.Product;
-import com.softesrveinc.reviwer.response.OracleResponse;
+import com.softesrveinc.reviewer.model.Product;
+import com.softesrveinc.reviewer.response.OracleResponse;
 import com.softserveinc.reviewer.service.OracleService;
 
 import javax.ws.rs.GET;
@@ -17,8 +17,6 @@ import java.util.List;
 @Path("/product")
 @Produces(MediaType.APPLICATION_JSON)
 public class OracleResource {
-
-    private static final OracleResponse ORACLE_RESPONSE = new OracleResponse();
 
     private final OracleService oracleService;
 
@@ -35,8 +33,7 @@ public class OracleResource {
         if(products.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        ORACLE_RESPONSE.setProducts(products);
-        return Response.ok(ORACLE_RESPONSE).build();
+        return Response.ok(new OracleResponse(products)).build();
     }
 
 }

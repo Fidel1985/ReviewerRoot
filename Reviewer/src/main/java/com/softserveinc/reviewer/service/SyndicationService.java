@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.softesrveinc.reviwer.model.Syndication;
-import com.softesrveinc.reviwer.response.SyndicationResponse;
+import com.softesrveinc.reviewer.model.Syndication;
+import com.softesrveinc.reviewer.response.SyndicationResponse;
 import com.softserveinc.reviewer.annotation.SyndicationBaseUrl;
 import com.softserveinc.reviewer.annotation.SyndicationUri;
 import org.glassfish.jersey.client.JerseyClient;

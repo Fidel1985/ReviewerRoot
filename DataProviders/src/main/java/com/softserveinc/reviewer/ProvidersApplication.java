@@ -9,7 +9,6 @@ import com.softserveinc.reviewer.resources.ElasticSearchResource;
 import com.softserveinc.reviewer.resources.OracleResource;
 import com.softserveinc.reviewer.resources.SyndicationResource;
 import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class ProvidersApplication extends Application<ProvidersConfiguration> {
@@ -21,11 +20,6 @@ public class ProvidersApplication extends Application<ProvidersConfiguration> {
     @Override
     public String getName() {
         return "DataProviders";
-    }
-
-    @Override
-    public void initialize(final Bootstrap<ProvidersConfiguration> bootstrap) {
-        // TODO: application initialization
     }
 
     @Override

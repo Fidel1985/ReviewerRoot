@@ -6,7 +6,6 @@ import com.softserveinc.reviewer.health.ReviewerHealthCheck;
 import com.softserveinc.reviewer.injector.GuiceModule;
 import com.softserveinc.reviewer.resources.ReviewerResource;
 import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class ReviewerApplication extends Application<ReviewerConfiguration> {
@@ -18,11 +17,6 @@ public class ReviewerApplication extends Application<ReviewerConfiguration> {
     @Override
     public String getName() {
         return "Reviewer";
-    }
-
-    @Override
-    public void initialize(final Bootstrap<ReviewerConfiguration> bootstrap) {
-        // TODO: application initialization
     }
 
     @Override

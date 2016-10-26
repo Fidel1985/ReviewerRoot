@@ -1,6 +1,6 @@
 package com.softserveinc.reviewer.service;
 
-import com.softesrveinc.reviwer.model.Product;
+import com.softesrveinc.reviewer.model.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +26,6 @@ public class OracleService {
     public List<Product> getMatches(String clientId, String productId) {
 
         List<Product> productMatches = new ArrayList<>();
-
         for (List<Product> products: MATCHES) {
             if (products.stream().anyMatch(x -> x.getClient().equals(clientId) && x.getExternalId().equals(productId))){
                 List<Product> productsExcludedClientItself = products.stream().filter(x -> !x.getClient().equals(clientId)).

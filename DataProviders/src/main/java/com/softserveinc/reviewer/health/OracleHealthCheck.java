@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
-import com.softesrveinc.reviwer.response.OracleResponse;
+import com.softesrveinc.reviewer.response.OracleResponse;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class OracleHealthCheck extends HealthCheck {
