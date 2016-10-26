@@ -9,22 +9,25 @@ import java.util.List;
 
 import com.google.inject.Inject;
 import com.softesrveinc.reviwer.model.Syndication;
-import com.softserveinc.reviewer.ReviewerConfiguration;
 import com.softesrveinc.reviwer.response.SyndicationResponse;
+import com.softserveinc.reviewer.annotation.SyndicationBaseUrl;
+import com.softserveinc.reviewer.annotation.SyndicationUri;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class SyndicationService {
-    private final ReviewerConfiguration configuration;
     private final JerseyClient client;
+    private String syndicationBaseUrl;
+    private String syndicationUri;
 
     @Inject
-    public SyndicationService(ReviewerConfiguration configuration, JerseyClient client) {
-        this.configuration = configuration;
+    public SyndicationService(JerseyClient client, @SyndicationBaseUrl String syndicationBaseUrl, @SyndicationUri String syndicationUri) {
         this.client = client;
+        this.syndicationBaseUrl = syndicationBaseUrl;
+        this.syndicationUri = syndicationUri;
     }
 
     public List<Syndication> getSources(String destinationClient) {
-        WebTarget webTarget = client.target(configuration.getSyndicationBaseUrl()).path(configuration.getSyndicationUri()).path(destinationClient);
+        WebTarget webTarget = client.target(syndicationBaseUrl).path(syndicationUri).path(destinationClient);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
         SyndicationResponse syndicationResponse = response.readEntity(SyndicationResponse.class);
