@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.softesrveinc.reviewer.model.Review;
-import com.softesrveinc.reviewer.response.ElasticSearchResponse;
+import com.softserveinc.reviewer.model.Review;
+import com.softserveinc.reviewer.response.ElasticSearchResponse;
 import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
 import org.glassfish.jersey.client.JerseyClient;

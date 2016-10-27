@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
-import com.softesrveinc.reviewer.response.ElasticSearchResponse;
+import com.softserveinc.reviewer.response.ElasticSearchResponse;
 import org.glassfish.jersey.client.JerseyClient;
 
 public class ElasticSearchHealthCheck extends HealthCheck {
