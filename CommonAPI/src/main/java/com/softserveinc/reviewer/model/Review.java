@@ -30,13 +30,11 @@ public class Review {
     }
 
     @Getter
+    @AllArgsConstructor
     @NoArgsConstructor
-    private class Product {
+    private static class Product {
         private String externalId;
 
-        public Product(String externalId) {
-            this.externalId = externalId;
-        }
     }
 
 }
