@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="UNIT TESTS">
+    <listeners>
+        <listener class-name="com.softserveinc.reviewer.TestListener" />
+    </listeners>
+
+    <!-- Verbose levels: 3-ERROR 5-WARNING 7-INFO 9-DEBUG -->
+    <test verbose="1" name="UnitTest">
+        <classes>
+            <class name="com.softserveinc.reviewer.service.ReviewerServiceTest"/>
+        </classes>
+    </test>
+</suite>
