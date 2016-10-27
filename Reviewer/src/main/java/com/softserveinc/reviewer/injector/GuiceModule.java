@@ -7,6 +7,8 @@ import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
 import com.softserveinc.reviewer.annotation.OracleBaseUrl;
 import com.softserveinc.reviewer.annotation.OracleUri;
+import com.softserveinc.reviewer.annotation.ReviewerBaseUrl;
+import com.softserveinc.reviewer.annotation.ReviewerUri;
 import com.softserveinc.reviewer.annotation.SyndicationBaseUrl;
 import com.softserveinc.reviewer.annotation.SyndicationUri;
 
@@ -27,6 +29,8 @@ public class GuiceModule extends AbstractModule {
         bindConstant().annotatedWith(OracleUri.class).to(configuration.getOracleUri());
         bindConstant().annotatedWith(SyndicationBaseUrl.class).to(configuration.getSyndicationBaseUrl());
         bindConstant().annotatedWith(SyndicationUri.class).to(configuration.getSyndicationUri());
+        bindConstant().annotatedWith(ReviewerBaseUrl.class).to(configuration.getReviewerBaseUrl());
+        bindConstant().annotatedWith(ReviewerUri.class).to(configuration.getReviewerUri());
 
     }
 }

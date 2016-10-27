@@ -14,3 +14,6 @@ oracleUri: /product/%s/%s/sources
 
 elasticSearchBaseUrl: http://localhost:8084
 elasticSearchUri: /explore
+
+reviewerBaseUrl: http://localhost:8082
+reviewerUri: /product
