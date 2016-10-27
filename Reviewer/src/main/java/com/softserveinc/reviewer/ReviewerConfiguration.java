@@ -21,6 +21,8 @@ public class ReviewerConfiguration extends Configuration {
     private String reviewerBaseUrl;
     @NotEmpty
     private String reviewerUri;
+    @NotEmpty
+    private String dataProvidersAdminUrl;
 
     @JsonProperty
     public String getSyndicationBaseUrl() {
@@ -60,5 +62,10 @@ public class ReviewerConfiguration extends Configuration {
     @JsonProperty
     public String getReviewerUri() {
         return reviewerUri;
+    }
+
+    @JsonProperty
+    public String getDataProvidersAdminUrl() {
+        return dataProvidersAdminUrl;
     }
 }

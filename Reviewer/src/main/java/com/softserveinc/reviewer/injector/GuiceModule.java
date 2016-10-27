@@ -3,6 +3,7 @@ package com.softserveinc.reviewer.injector;
 import com.google.inject.Inject;
 import com.google.inject.AbstractModule;
 import com.softserveinc.reviewer.ReviewerConfiguration;
+import com.softserveinc.reviewer.annotation.DataProvidersAdminUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
 import com.softserveinc.reviewer.annotation.OracleBaseUrl;
@@ -31,6 +32,7 @@ public class GuiceModule extends AbstractModule {
         bindConstant().annotatedWith(SyndicationUri.class).to(configuration.getSyndicationUri());
         bindConstant().annotatedWith(ReviewerBaseUrl.class).to(configuration.getReviewerBaseUrl());
         bindConstant().annotatedWith(ReviewerUri.class).to(configuration.getReviewerUri());
+        bindConstant().annotatedWith(DataProvidersAdminUrl.class).to(configuration.getDataProvidersAdminUrl());
 
     }
 }
