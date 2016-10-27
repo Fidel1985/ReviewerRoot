@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.softesrveinc.reviewer.model.Product;
-import com.softesrveinc.reviewer.response.OracleResponse;
+import com.softserveinc.reviewer.model.Product;
+import com.softserveinc.reviewer.response.OracleResponse;
 import com.softserveinc.reviewer.annotation.OracleBaseUrl;
 import com.softserveinc.reviewer.annotation.OracleUri;
 import org.glassfish.jersey.client.JerseyClient;

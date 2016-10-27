@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.inject.Inject;
-import com.softesrveinc.reviewer.model.Product;
-import com.softesrveinc.reviewer.model.Review;
-import com.softesrveinc.reviewer.model.Syndication;
+import com.softserveinc.reviewer.model.Product;
+import com.softserveinc.reviewer.model.Review;
+import com.softserveinc.reviewer.model.Syndication;
 import com.softserveinc.reviewer.model.ReviewResult;
 
 public class ReviewerService {

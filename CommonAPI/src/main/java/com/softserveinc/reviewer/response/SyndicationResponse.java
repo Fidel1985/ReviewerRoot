@@ -1,6 +1,6 @@
-package com.softesrveinc.reviewer.response;
+package com.softserveinc.reviewer.response;
 
-import com.softesrveinc.reviewer.model.Syndication;
+import com.softserveinc.reviewer.model.Syndication;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

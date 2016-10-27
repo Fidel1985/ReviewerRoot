@@ -1,6 +1,6 @@
-package com.softesrveinc.reviewer.response;
+package com.softserveinc.reviewer.response;
 
-import com.softesrveinc.reviewer.model.Review;
+import com.softserveinc.reviewer.model.Review;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

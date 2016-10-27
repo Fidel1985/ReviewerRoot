@@ -1,4 +1,4 @@
-package com.softesrveinc.reviewer.model;
+package com.softserveinc.reviewer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

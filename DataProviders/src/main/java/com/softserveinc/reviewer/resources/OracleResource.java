@@ -2,8 +2,8 @@ package com.softserveinc.reviewer.resources;
 
 import com.google.inject.Inject;
 
-import com.softesrveinc.reviewer.model.Product;
-import com.softesrveinc.reviewer.response.OracleResponse;
+import com.softserveinc.reviewer.model.Product;
+import com.softserveinc.reviewer.response.OracleResponse;
 import com.softserveinc.reviewer.service.OracleService;
 
 import javax.ws.rs.GET;

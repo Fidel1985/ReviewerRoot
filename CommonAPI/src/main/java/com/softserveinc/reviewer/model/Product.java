@@ -1,4 +1,4 @@
-package com.softesrveinc.reviewer.model;
+package com.softserveinc.reviewer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
