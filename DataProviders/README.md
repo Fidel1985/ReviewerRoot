@@ -2,7 +2,7 @@
 This module provides test data, until the real services are disabled.
 
 ## Switchboard service
-  Description: provides information about friend relation between clients.
+  Description: provides information about syndicated clients.
   * HTTP Request: [http://switchboard-host/edges/to/{destinationClientID}](http://switchboard-host/edges/to/{destinationClientID})
   * Response:
 ```
@@ -29,7 +29,7 @@ This module provides test data, until the real services are disabled.
     * 503 - Service Unavailable
 
 ## Oracle
-  Description: provides information about product similarity.
+  Description: provides information about product matches.
   * HTTP Request: [http://oracle-host/product/{clientID}/{productID}/sources](http://oracle-host/product/{clientID}/{productID}/sources)
   * Response:
 ```
