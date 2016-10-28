@@ -6,7 +6,7 @@ public class ElasticSearchHealthCheck extends HealthCheck {
 
     @Override
     protected Result check() throws Exception {
-        //return Result.healthy();
-        return Result.unhealthy("something went wrong");
+        return Result.healthy("ElasticSearch Service is healthy!");
+        //return Result.unhealthy("something went wrong");
     }
 }

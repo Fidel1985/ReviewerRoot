@@ -6,13 +6,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ReviewerConfiguration extends Configuration {
     @NotEmpty
+    private String syndicationAdminBaseUrl;
+    @NotEmpty
     private String syndicationBaseUrl;
     @NotEmpty
     private String syndicationUri;
     @NotEmpty
+    private String oracleAdminBaseUrl;
+    @NotEmpty
     private String oracleBaseUrl;
     @NotEmpty
     private String oracleUri;
+    @NotEmpty
+    private String elasticSearchAdminBaseUrl;
     @NotEmpty
     private String elasticSearchBaseUrl;
     @NotEmpty
@@ -25,6 +31,11 @@ public class ReviewerConfiguration extends Configuration {
     private String dataProvidersAdminUrl;
 
     @JsonProperty
+    public String getSyndicationAdminBaseUrl() {
+        return syndicationAdminBaseUrl;
+    }
+
+    @JsonProperty
     public String getSyndicationBaseUrl() {
         return syndicationBaseUrl;
     }
@@ -35,6 +46,11 @@ public class ReviewerConfiguration extends Configuration {
     }
 
     @JsonProperty
+    public String getOracleAdminBaseUrl() {
+        return oracleAdminBaseUrl;
+    }
+
+    @JsonProperty
     public String getOracleBaseUrl() {
         return oracleBaseUrl;
     }
@@ -42,6 +58,11 @@ public class ReviewerConfiguration extends Configuration {
     @JsonProperty
     public String getOracleUri() {
         return oracleUri;
+    }
+
+    @JsonProperty
+    public String getElasticSearchAdminBaseUrl() {
+        return elasticSearchAdminBaseUrl;
     }
 
     @JsonProperty

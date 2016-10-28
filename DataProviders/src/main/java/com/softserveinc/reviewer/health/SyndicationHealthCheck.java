@@ -6,6 +6,6 @@ public class SyndicationHealthCheck extends HealthCheck {
 
     @Override
     protected Result check() throws Exception {
-        return Result.healthy();
+        return Result.healthy("Syndication Service is healthy!");
     }
 }

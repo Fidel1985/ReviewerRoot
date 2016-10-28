@@ -6,12 +6,15 @@ server:
   - type: http
     port: 8083
 
+syndicationAdminBaseUrl: http://localhost:8085
 syndicationBaseUrl: http://localhost:8084
 syndicationUri: /edges/to
 
+oracleAdminBaseUrl: http://localhost:8085
 oracleBaseUrl: http://localhost:8084
 oracleUri: /product/%s/%s/sources
 
+elasticSearchAdminBaseUrl: http://localhost:8085
 elasticSearchBaseUrl: http://localhost:8084
 elasticSearchUri: /explore
 

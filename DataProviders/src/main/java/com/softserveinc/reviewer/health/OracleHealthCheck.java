@@ -6,6 +6,6 @@ public class OracleHealthCheck extends HealthCheck {
 
     @Override
     protected Result check() throws Exception {
-        return Result.healthy();
+        return Result.healthy("Oracle Service is healthy!");
     }
 }
