@@ -35,7 +35,7 @@ public class OracleHealthCheck extends HealthCheck {
                 return Result.unhealthy(result);
             }
         } catch (ProcessingException e) {
-            result = "Oracle Service unavailable at the moment.";
+            result = "Oracle Service unavailable at the moment";
             return Result.unhealthy(result);
         }
         return Result.healthy(result);

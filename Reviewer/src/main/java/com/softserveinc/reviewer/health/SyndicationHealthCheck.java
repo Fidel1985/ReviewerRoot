@@ -35,7 +35,7 @@ public class SyndicationHealthCheck extends HealthCheck {
                 return Result.unhealthy(result);
             }
         } catch (ProcessingException e) {
-            result = "Syndication Service unavailable at the moment.";
+            result = "Syndication Service unavailable at the moment";
             return Result.unhealthy(result);
         }
         return Result.healthy(result);

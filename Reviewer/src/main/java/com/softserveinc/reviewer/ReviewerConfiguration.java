@@ -23,12 +23,6 @@ public class ReviewerConfiguration extends Configuration {
     private String elasticSearchBaseUrl;
     @NotEmpty
     private String elasticSearchUri;
-    @NotEmpty
-    private String reviewerBaseUrl;
-    @NotEmpty
-    private String reviewerUri;
-    @NotEmpty
-    private String dataProvidersAdminUrl;
 
     @JsonProperty
     public String getSyndicationAdminBaseUrl() {
@@ -75,18 +69,4 @@ public class ReviewerConfiguration extends Configuration {
         return elasticSearchUri;
     }
 
-    @JsonProperty
-    public String getReviewerBaseUrl() {
-        return reviewerBaseUrl;
-    }
-
-    @JsonProperty
-    public String getReviewerUri() {
-        return reviewerUri;
-    }
-
-    @JsonProperty
-    public String getDataProvidersAdminUrl() {
-        return dataProvidersAdminUrl;
-    }
 }

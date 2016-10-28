@@ -35,7 +35,7 @@ public class ElasticSearchHealthCheck extends HealthCheck {
                 return Result.unhealthy(result);
             }
         } catch (ProcessingException e) {
-            result = "ElasticSearch Service unavailable at the moment.";
+            result = "ElasticSearch Service unavailable at the moment";
             return Result.unhealthy(result);
         }
         return Result.healthy(result);
