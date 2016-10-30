@@ -2,25 +2,33 @@ package com.softserveinc.reviewer.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
+import com.softserveinc.reviewer.annotation.ElasticSearchHealthCheckUrl;
+import com.softserveinc.reviewer.annotation.OracleHealthCheckUrl;
+import com.softserveinc.reviewer.annotation.HealthCheckBaseUrl;
 
 public class ReviewerHealthCheck extends HealthCheck {
-    private final SyndicationHealthCheck syndicationHealthCheck;
-    private final OracleHealthCheck oracleHealthCheck;
-    private final ElasticSearchHealthCheck elasticSearchHealthCheck;
+    private final DataProvidersHealthCheck dataProvidersHealthCheck;
+    private final String syndicationHealthCheckUrl;
+    private final String oracleHealthCheckUrl;
+    private final String elasticSearchHealthCheckUrl;
 
     @Inject
-    public ReviewerHealthCheck(SyndicationHealthCheck syndicationHealthCheck, OracleHealthCheck oracleHealthCheck,
-            ElasticSearchHealthCheck elasticSearchHealthCheck) {
-        this.syndicationHealthCheck = syndicationHealthCheck;
-        this.oracleHealthCheck = oracleHealthCheck;
-        this.elasticSearchHealthCheck = elasticSearchHealthCheck;
+    public ReviewerHealthCheck(DataProvidersHealthCheck dataProvidersHealthCheck, @HealthCheckBaseUrl String syndicationHealthCheckUrl,
+                               @OracleHealthCheckUrl String oracleHealthCheckUrl, @ElasticSearchHealthCheckUrl String elasticSearchHealthCheckUrl) {
+        this.dataProvidersHealthCheck = dataProvidersHealthCheck;
+        this.syndicationHealthCheckUrl = syndicationHealthCheckUrl;
+        this.oracleHealthCheckUrl = oracleHealthCheckUrl;
+        this.elasticSearchHealthCheckUrl = elasticSearchHealthCheckUrl;
     }
 
     @Override
     protected Result check() throws Exception {
-        Result syndicationResult = syndicationHealthCheck.check();
-        Result oracleResult = oracleHealthCheck.check();
-        Result elasticSearchResult = elasticSearchHealthCheck.check();
+        dataProvidersHealthCheck.setHealthCheckUrl(syndicationHealthCheckUrl);
+        Result syndicationResult = dataProvidersHealthCheck.check();
+        dataProvidersHealthCheck.setHealthCheckUrl(oracleHealthCheckUrl);
+        Result oracleResult = dataProvidersHealthCheck.check();
+        dataProvidersHealthCheck.setHealthCheckUrl(elasticSearchHealthCheckUrl);
+        Result elasticSearchResult = dataProvidersHealthCheck.check();
         String message = "{syndication: " + syndicationResult.getMessage() + ", oracle: " + oracleResult.getMessage() +
                 ", elastic search: " + elasticSearchResult.getMessage() + "}";
         if(syndicationResult.isHealthy() && oracleResult.isHealthy() && elasticSearchResult.isHealthy()) {
