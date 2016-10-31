@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 public class DataProvidersHealthCheck extends HealthCheck {
     private final JerseyClient client;
-    private String healthCheckUrl;
+    private final String healthCheckUrl;
 
     @Inject
     public DataProvidersHealthCheck(JerseyClient client, String healthCheckUrl) {
@@ -35,7 +35,4 @@ public class DataProvidersHealthCheck extends HealthCheck {
         return Result.healthy("Service is healthy");
     }
 
-    public void setHealthCheckUrl(String healthCheckUrl) {
-        this.healthCheckUrl = healthCheckUrl;
-    }
 }

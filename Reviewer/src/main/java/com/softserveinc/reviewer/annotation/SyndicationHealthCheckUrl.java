@@ -11,4 +11,4 @@ import com.google.inject.BindingAnnotation;
 @Retention(RUNTIME)
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 @BindingAnnotation
-public @interface HealthCheckBaseUrl {}
+public @interface SyndicationHealthCheckUrl {}
