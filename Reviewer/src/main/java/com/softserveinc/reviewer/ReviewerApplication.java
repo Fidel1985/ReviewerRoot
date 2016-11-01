@@ -1,7 +1,5 @@
 package com.softserveinc.reviewer;
 
-import javax.servlet.ServletConfig;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.softserveinc.reviewer.health.ElasticSearchHealthCheck;

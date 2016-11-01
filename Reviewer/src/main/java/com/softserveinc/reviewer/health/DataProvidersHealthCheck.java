@@ -2,37 +2,40 @@ package com.softserveinc.reviewer.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
-import org.glassfish.jersey.client.JerseyClient;
+import org.joda.time.LocalDateTime;
 
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
+import java.net.URL;
 
 public class DataProvidersHealthCheck extends HealthCheck {
-    private final JerseyClient client;
     private final String healthCheckUrl;
 
     @Inject
-    public DataProvidersHealthCheck(JerseyClient client, String healthCheckUrl) {
-        this.client = client;
+    public DataProvidersHealthCheck(String healthCheckUrl) {
         this.healthCheckUrl = healthCheckUrl;
     }
 
     @Override
     protected Result check() throws Exception {
-        WebTarget webTarget = client.target(healthCheckUrl).path("healthcheck");
-        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        URL url = new URL(healthCheckUrl + "/healthcheck");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setConnectTimeout(250);
         try {
-            Response response = invocationBuilder.get();
-            if(response.getStatus() == 500) {
-                return Result.unhealthy("Service is unhealthy");
+            if(connection.getResponseCode() >= 200 && connection.getResponseCode() <= 299)
+            {
+                return Result.healthy("Service is healthy");
             }
-        } catch (ProcessingException e) {
-            return Result.unhealthy("Service unavailable at the moment");
+        } catch (SocketTimeoutException e) {
+            //return Result.unhealthy("Service unavailable at the moment");
+            return Result.unhealthy("ConnectTimeoutException " + new LocalDateTime() + " " + e.getClass());
+        } catch (ConnectException e) {
+            return Result.unhealthy("ConnectException " + e.getClass());
+        } finally {
+            connection.disconnect();
         }
-        return Result.healthy("Service is healthy");
+        return Result.unhealthy("Service is unhealthy");
     }
 
 }
