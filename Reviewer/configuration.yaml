@@ -17,3 +17,10 @@ oracleUri: /product/%s/%s/sources
 elasticSearchHealthCheckUrl: http://localhost:8085/healthcheck
 elasticSearchBaseUrl: http://localhost:8084
 elasticSearchUri: /explore
+
+database:
+  driverClass: org.h2.Driver
+  user: sa
+  password: sa
+  url: jdbc:h2:file:d:/DB/reviewer.database;AUTO_SERVER=TRUE
+  #poolSize: 1

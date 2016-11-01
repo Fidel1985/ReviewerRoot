@@ -1,70 +1,70 @@
 package com.softserveinc.reviewer;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import com.softserveinc.reviewer.config.DatabaseConfiguration;
 import io.dropwizard.Configuration;
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class ReviewerConfiguration extends Configuration {
-    @NotEmpty
+    @NotNull
+    @Valid
+    private DatabaseConfiguration database;
+    @NotNull
     private String syndicationHealthCheckUrl;
-    @NotEmpty
+    @NotNull
     private String syndicationBaseUrl;
-    @NotEmpty
+    @NotNull
     private String syndicationUri;
-    @NotEmpty
+    @NotNull
     private String oracleHealthCheckUrl;
-    @NotEmpty
+    @NotNull
     private String oracleBaseUrl;
-    @NotEmpty
+    @NotNull
     private String oracleUri;
-    @NotEmpty
+    @NotNull
     private String elasticSearchHealthCheckUrl;
-    @NotEmpty
+    @NotNull
     private String elasticSearchBaseUrl;
-    @NotEmpty
+    @NotNull
     private String elasticSearchUri;
 
-    @JsonProperty
+    public DatabaseConfiguration getDatabase() {
+        return database;
+    }
+
     public String getSyndicationHealthCheckUrl() {
         return syndicationHealthCheckUrl;
     }
 
-    @JsonProperty
     public String getSyndicationBaseUrl() {
         return syndicationBaseUrl;
     }
 
-    @JsonProperty
     public String getSyndicationUri() {
         return syndicationUri;
     }
 
-    @JsonProperty
     public String getOracleHealthCheckUrl() {
         return oracleHealthCheckUrl;
     }
 
-    @JsonProperty
     public String getOracleBaseUrl() {
         return oracleBaseUrl;
     }
 
-    @JsonProperty
     public String getOracleUri() {
         return oracleUri;
     }
 
-    @JsonProperty
     public String getElasticSearchHealthCheckUrl() {
         return elasticSearchHealthCheckUrl;
     }
 
-    @JsonProperty
     public String getElasticSearchBaseUrl() {
         return elasticSearchBaseUrl;
     }
 
-    @JsonProperty
     public String getElasticSearchUri() {
         return elasticSearchUri;
     }
