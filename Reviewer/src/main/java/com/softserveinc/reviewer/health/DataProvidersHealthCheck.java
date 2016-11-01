@@ -2,7 +2,6 @@ package com.softserveinc.reviewer.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
-import org.joda.time.LocalDateTime;
 
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
@@ -27,11 +26,8 @@ public class DataProvidersHealthCheck extends HealthCheck {
             {
                 return Result.healthy("Service is healthy");
             }
-        } catch (SocketTimeoutException e) {
-            //return Result.unhealthy("Service unavailable at the moment");
-            return Result.unhealthy("ConnectTimeoutException " + new LocalDateTime() + " " + e.getClass());
-        } catch (ConnectException e) {
-            return Result.unhealthy("ConnectException " + e.getClass());
+        } catch (SocketTimeoutException | ConnectException e) {
+            return Result.unhealthy("Service unavailable at the moment");
         } finally {
             connection.disconnect();
         }
