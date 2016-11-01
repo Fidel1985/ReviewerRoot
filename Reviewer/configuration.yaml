@@ -6,11 +6,14 @@ server:
   - type: http
     port: 8083
 
+syndicationHealthCheckUrl: http://localhost:8085/healthcheck
 syndicationBaseUrl: http://localhost:8084
 syndicationUri: /edges/to
 
+oracleHealthCheckUrl: http://localhost:8085/healthcheck
 oracleBaseUrl: http://localhost:8084
 oracleUri: /product/%s/%s/sources
 
+elasticSearchHealthCheckUrl: http://localhost:8085/healthcheck
 elasticSearchBaseUrl: http://localhost:8084
 elasticSearchUri: /explore

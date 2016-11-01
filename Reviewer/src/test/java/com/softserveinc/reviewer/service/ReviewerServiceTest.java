@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.softesrveinc.reviewer.model.Product;
-import com.softesrveinc.reviewer.model.Syndication;
+import com.softserveinc.reviewer.model.Product;
+import com.softserveinc.reviewer.model.Syndication;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;

@@ -16,8 +16,8 @@ import org.glassfish.jersey.client.JerseyClient;
 
 public class SyndicationService {
     private final JerseyClient client;
-    private String syndicationBaseUrl;
-    private String syndicationUri;
+    private final String syndicationBaseUrl;
+    private final String syndicationUri;
 
     @Inject
     public SyndicationService(JerseyClient client, @SyndicationBaseUrl String syndicationBaseUrl, @SyndicationUri String syndicationUri) {
