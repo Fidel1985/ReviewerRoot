@@ -22,9 +22,9 @@ public class ReviewerApplication extends Application<ReviewerConfiguration> {
     @Override
     public void run(final ReviewerConfiguration configuration, final Environment environment) {
         Injector injector = Guice.createInjector(new GuiceModule(configuration));
-        environment.healthChecks().register("SyndicationHealthCheck", new DataProvidersHealthCheck(configuration.getSyndicationHealthCheckUrl()));
-        environment.healthChecks().register("OracleHealthCheck", new DataProvidersHealthCheck(configuration.getOracleHealthCheckUrl()));
-        environment.healthChecks().register("ElasticSearchHealthCheck", new DataProvidersHealthCheck(configuration.getElasticSearchHealthCheckUrl()));
+        environment.healthChecks().register("switchboard", new DataProvidersHealthCheck(configuration.getSyndicationHealthCheckUrl()));
+        environment.healthChecks().register("oracle", new DataProvidersHealthCheck(configuration.getOracleHealthCheckUrl()));
+        environment.healthChecks().register("elasticsearch", new DataProvidersHealthCheck(configuration.getElasticSearchHealthCheckUrl()));
         environment.jersey().register(injector.getInstance(ReviewerResource.class));
     }
 

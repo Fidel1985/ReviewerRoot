@@ -18,7 +18,7 @@ public class DataProvidersHealthCheck extends HealthCheck {
 
     @Override
     protected Result check() throws Exception {
-        URL url = new URL(healthCheckUrl + "/healthcheck");
+        URL url = new URL(healthCheckUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setConnectTimeout(250);
         try {
