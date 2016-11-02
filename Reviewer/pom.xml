@@ -19,7 +19,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>1.0.2</dropwizard.version>
         <guice.version>4.0</guice.version>
-        <hibernate.version>5.2.2.Final</hibernate.version>
+        <mongojack.version>2.6.1</mongojack.version>
+        <mongodb.version>3.2.2</mongodb.version>
         <testng.version>6.9.10</testng.version>
         <mockito.version>1.10.19</mockito.version>
         <mainClass>com.softserveinc.reviewer.ReviewerApplication</mainClass>
@@ -53,25 +54,14 @@
             <version>${guice.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-persist</artifactId>
-            <version>${guice.version}</version>
+            <groupId>org.mongojack</groupId>
+            <artifactId>mongojack</artifactId>
+            <version>${mongojack.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-servlet</artifactId>
-            <version>${guice.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <!-- H2 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.192</version>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongodb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

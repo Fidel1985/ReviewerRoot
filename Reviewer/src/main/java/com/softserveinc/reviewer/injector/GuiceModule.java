@@ -4,7 +4,7 @@ import static com.google.inject.matcher.Matchers.*;
 
 import com.google.inject.Inject;
 import com.google.inject.AbstractModule;
-import com.softserveinc.reviewer.ReviewerConfiguration;
+import com.softserveinc.reviewer.config.ReviewerConfiguration;
 import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
 import com.softserveinc.reviewer.annotation.OracleBaseUrl;
@@ -16,7 +16,6 @@ import com.softserveinc.reviewer.interceptor.TracingInterceptor;
 import com.softserveinc.reviewer.service.ReviewerService;
 
 public class GuiceModule extends AbstractModule {
-
     private final ReviewerConfiguration configuration;
 
     @Inject

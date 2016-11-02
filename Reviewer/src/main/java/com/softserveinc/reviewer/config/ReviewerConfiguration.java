@@ -1,4 +1,4 @@
-package com.softserveinc.reviewer;
+package com.softserveinc.reviewer.config;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
