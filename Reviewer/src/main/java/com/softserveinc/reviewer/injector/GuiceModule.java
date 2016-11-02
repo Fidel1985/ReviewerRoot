@@ -26,7 +26,9 @@ public class GuiceModule extends AbstractModule {
     @Override
     public void configure() {
         bindInterceptor(subclassesOf(ReviewerService.class), any(), new LoggingInterceptor());
-        bindInterceptor(subclassesOf(ReviewerService.class), any(), new TracingInterceptor());
+        TracingInterceptor interceptor = new TracingInterceptor();
+        requestInjection(interceptor);
+        bindInterceptor(subclassesOf(ReviewerService.class), any(), interceptor);
         bindConstant().annotatedWith(ElasticSearchBaseUrl.class).to(configuration.getElasticSearchBaseUrl());
         bindConstant().annotatedWith(ElasticSearchUri.class).to(configuration.getElasticSearchUri());
         bindConstant().annotatedWith(OracleBaseUrl.class).to(configuration.getOracleBaseUrl());

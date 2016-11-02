@@ -3,7 +3,6 @@ package com.softserveinc.reviewer.config;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.softserveinc.reviewer.config.DatabaseConfiguration;
 import io.dropwizard.Configuration;
 
 public class ReviewerConfiguration extends Configuration {

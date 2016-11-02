@@ -11,19 +11,15 @@ import com.softserveinc.reviewer.model.Syndication;
 import com.softserveinc.reviewer.model.ReviewResult;
 
 public class ReviewerService {
-
     private final SyndicationService syndicationService;
     private final OracleService oracleService;
     private final ElasticSearchService elasticSearchService;
-    private final MongoJackService mongoJackService;
 
     @Inject
-    public ReviewerService(SyndicationService syndicationService, OracleService oracleService,
-            ElasticSearchService elasticSearchService, MongoJackService mongoJackService) {
+    public ReviewerService(SyndicationService syndicationService, OracleService oracleService, ElasticSearchService elasticSearchService) {
         this.syndicationService = syndicationService;
         this.oracleService = oracleService;
         this.elasticSearchService = elasticSearchService;
-        this.mongoJackService = mongoJackService;
     }
 
     public ReviewResult getSyndicationMatches(String client, String externalId) {
@@ -37,9 +33,6 @@ public class ReviewerService {
         List<Review> reviews = elasticSearchService.getReviews(client, externalId);
         List<Review> syndicatedReviews = new ArrayList<>();
         syndicatedProducts.forEach(x -> syndicatedReviews.addAll(elasticSearchService.getReviews(x.getClient(), x.getExternalId())));
-
-        mongoJackService.invoke();
-        //Person person = jpaService.createNewPerson();
 
         return new ReviewResult(client, externalId, reviews.size(), syndicatedReviews.size());
     }

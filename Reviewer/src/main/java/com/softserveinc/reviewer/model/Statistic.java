@@ -6,7 +6,9 @@ import org.mongojack.ObjectId;
 public class Statistic {
     @ObjectId
     private String id;
-    private String name;
+    private String methodName;
+    private int invocationCount;
+    private double average;
 
     @JsonProperty("_id")
     public String getId() {
@@ -17,11 +19,29 @@ public class Statistic {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    @JsonProperty("name")
+    public String getMethodName() {
+        return methodName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    @JsonProperty("count")
+    public int getInvocationCount() {
+        return invocationCount;
+    }
+
+    public void setInvocationCount(int invocationCount) {
+        this.invocationCount = invocationCount;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
     }
 }
