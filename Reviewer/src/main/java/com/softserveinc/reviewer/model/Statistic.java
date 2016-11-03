@@ -2,24 +2,12 @@ package com.softserveinc.reviewer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.mongojack.ObjectId;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Statistic {
-    @ObjectId
-    private String id;
     private String methodName;
     private int invocationCount;
     private double average;
-
-    @JsonProperty("_id")
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     @JsonProperty("name")
     public String getMethodName() {

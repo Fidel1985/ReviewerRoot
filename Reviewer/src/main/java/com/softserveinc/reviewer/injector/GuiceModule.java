@@ -32,8 +32,8 @@ public class GuiceModule extends AbstractModule {
         TracingInterceptor interceptor = new TracingInterceptor();
         requestInjection(interceptor);
         bindInterceptor(subclassesOf(ReviewerService.class), any(), interceptor);
-        bind(StatisticDao.class).to(StatisticDaoMongoJackImpl.class);
-        //bind(StatisticDao.class).to(StatisticDaoMongoNativeImpl.class);
+        //bind(StatisticDao.class).to(StatisticDaoMongoJackImpl.class);
+        bind(StatisticDao.class).to(StatisticDaoMongoNativeImpl.class);
         bindConstant().annotatedWith(ElasticSearchBaseUrl.class).to(configuration.getElasticSearchBaseUrl());
         bindConstant().annotatedWith(ElasticSearchUri.class).to(configuration.getElasticSearchUri());
         bindConstant().annotatedWith(OracleBaseUrl.class).to(configuration.getOracleBaseUrl());
