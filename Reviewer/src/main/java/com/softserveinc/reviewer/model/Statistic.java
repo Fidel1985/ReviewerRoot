@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Statistic {
     private String methodName;
     private int invocationCount;
-    private double average;
+    private long average;
 
     @JsonProperty("name")
     public String getMethodName() {
@@ -27,11 +27,11 @@ public class Statistic {
         this.invocationCount = invocationCount;
     }
 
-    public double getAverage() {
+    public long getAverage() {
         return average;
     }
 
-    public void setAverage(double average) {
+    public void setAverage(long average) {
         this.average = average;
     }
 }

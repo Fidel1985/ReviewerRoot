@@ -15,13 +15,13 @@ public class TracingInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        long start = System.nanoTime();
+        long start = System.currentTimeMillis();
         try {
             return invocation.proceed();
         } finally {
-            double duration = (System.nanoTime() - start) / 1000000.0;
+            long duration = System.currentTimeMillis() - start;
             statisticService.saveStats(duration, invocation.getMethod().getName());
-            LOG.info(String.format("Invocation of method %s took %.1f ms.",
+            LOG.info(String.format("Invocation of method %s took %d ms.",
                     invocation.getMethod().getName(), duration));
         }
     }

@@ -4,6 +4,10 @@ import static com.google.inject.matcher.Matchers.*;
 
 import com.google.inject.Inject;
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
+import com.mongodb.MongoClient;
+import com.softserveinc.reviewer.config.MongoClientProvider;
 import com.softserveinc.reviewer.config.ReviewerConfiguration;
 import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
@@ -42,4 +46,12 @@ public class GuiceModule extends AbstractModule {
         bindConstant().annotatedWith(SyndicationUri.class).to(configuration.getSyndicationUri());
 
     }
+
+    @Provides
+    @Singleton
+    MongoClientProvider provideMongoClient() {
+        return new MongoClientProvider(configuration.getDatabase().getHost(), configuration.getDatabase().getPort(),
+                configuration.getDatabase().getName(), configuration.getDatabase().getCollection());
+    }
+
 }

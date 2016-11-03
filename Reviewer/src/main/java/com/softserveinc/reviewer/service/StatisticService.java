@@ -12,21 +12,21 @@ public class StatisticService {
         this.statisticDao = statisticDao;
     }
 
-    public void saveStats(double duration, String methodName) {
+    public void saveStats(long duration, String methodName) {
         Statistic statistic = statisticDao.getOneByMethodName(methodName);
 
         if (statistic != null) {
             int invocationCount = statistic.getInvocationCount();
-            double oldAverage = statistic.getAverage();
-            double newAverage = (invocationCount * oldAverage + duration) / ++invocationCount;
-            statistic.setAverage(Math.round(newAverage * 10.0) / 10.0);
+            long oldAverage = statistic.getAverage();
+            long newAverage = (invocationCount * oldAverage + duration) / ++invocationCount;
+            statistic.setAverage(newAverage);
             statistic.setInvocationCount(invocationCount);
             statisticDao.update(statistic);
         } else {
             statistic = new Statistic();
             statistic.setMethodName(methodName);
             statistic.setInvocationCount(1);
-            statistic.setAverage(Math.round(duration * 10.0) / 10.0);
+            statistic.setAverage(duration);
             statisticDao.create(statistic);
         }
     }

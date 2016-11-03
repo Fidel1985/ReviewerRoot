@@ -4,7 +4,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import io.dropwizard.Configuration;
+import lombok.Getter;
 
+@Getter
 public class ReviewerConfiguration extends Configuration {
     @NotNull
     @Valid
@@ -27,45 +29,5 @@ public class ReviewerConfiguration extends Configuration {
     private String elasticSearchBaseUrl;
     @NotNull
     private String elasticSearchUri;
-
-    public DatabaseConfiguration getDatabase() {
-        return database;
-    }
-
-    public String getSyndicationHealthCheckUrl() {
-        return syndicationHealthCheckUrl;
-    }
-
-    public String getSyndicationBaseUrl() {
-        return syndicationBaseUrl;
-    }
-
-    public String getSyndicationUri() {
-        return syndicationUri;
-    }
-
-    public String getOracleHealthCheckUrl() {
-        return oracleHealthCheckUrl;
-    }
-
-    public String getOracleBaseUrl() {
-        return oracleBaseUrl;
-    }
-
-    public String getOracleUri() {
-        return oracleUri;
-    }
-
-    public String getElasticSearchHealthCheckUrl() {
-        return elasticSearchHealthCheckUrl;
-    }
-
-    public String getElasticSearchBaseUrl() {
-        return elasticSearchBaseUrl;
-    }
-
-    public String getElasticSearchUri() {
-        return elasticSearchUri;
-    }
 
 }
