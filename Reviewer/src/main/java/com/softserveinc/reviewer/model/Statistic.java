@@ -1,8 +1,10 @@
 package com.softserveinc.reviewer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.mongojack.ObjectId;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Statistic {
     @ObjectId
     private String id;
