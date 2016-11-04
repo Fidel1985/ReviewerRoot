@@ -12,7 +12,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.softserveinc.reviewer.annotation.StatsCollection;
-import com.softserveinc.reviewer.annotation.TestDatabase;
+import com.softserveinc.reviewer.annotation.DatabaseName;
 import com.softserveinc.reviewer.model.Statistic;
 import org.mongojack.DBCursor;
 import org.mongojack.DBQuery;
@@ -24,7 +24,7 @@ public class StatisticDaoMongoJackImpl implements StatisticDao {
     private final String statsCollection;
 
     @Inject
-    public StatisticDaoMongoJackImpl(Provider<MongoClient> mongoClientProvider, @TestDatabase String database,
+    public StatisticDaoMongoJackImpl(Provider<MongoClient> mongoClientProvider, @DatabaseName String database,
             @StatsCollection String statsCollection) {
         this.mongoClientProvider = mongoClientProvider;
         this.database = database;

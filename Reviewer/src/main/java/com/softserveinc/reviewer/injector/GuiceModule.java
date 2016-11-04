@@ -8,7 +8,7 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.mongodb.MongoClient;
 import com.softserveinc.reviewer.annotation.StatsCollection;
-import com.softserveinc.reviewer.annotation.TestDatabase;
+import com.softserveinc.reviewer.annotation.DatabaseName;
 import com.softserveinc.reviewer.config.ReviewerConfiguration;
 import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
@@ -43,7 +43,7 @@ public class GuiceModule extends AbstractModule {
         bindConstant().annotatedWith(OracleUri.class).to(configuration.getOracleUri());
         bindConstant().annotatedWith(SyndicationBaseUrl.class).to(configuration.getSyndicationBaseUrl());
         bindConstant().annotatedWith(SyndicationUri.class).to(configuration.getSyndicationUri());
-        bindConstant().annotatedWith(TestDatabase.class).to(configuration.getMongo().getDatabase());
+        bindConstant().annotatedWith(DatabaseName.class).to(configuration.getMongo().getDatabase());
         bindConstant().annotatedWith(StatsCollection.class).to(configuration.getMongo().getStatsCollection());
     }
 
