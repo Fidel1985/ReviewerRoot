@@ -6,20 +6,27 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.softserveinc.reviewer.config.MongoClientProvider;
+import com.softserveinc.reviewer.annotation.Collection;
+import com.softserveinc.reviewer.annotation.Database;
 import com.softserveinc.reviewer.model.Statistic;
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 public class StatisticDaoMongoNativeImpl implements StatisticDao{
-    private final Provider<MongoClientProvider> mongoClientProvider;
+    private final Provider<MongoClient> mongoClientProvider;
+    private final String database;
+    private final String collection;
 
     @Inject
-    public StatisticDaoMongoNativeImpl(Provider<MongoClientProvider> mongoClientProvider) {
+    public StatisticDaoMongoNativeImpl(Provider<MongoClient> mongoClientProvider, @Database String database,
+            @Collection String collection) {
         this.mongoClientProvider = mongoClientProvider;
+        this.database = database;
+        this.collection = collection;
     }
 
     @Override
@@ -60,8 +67,8 @@ public class StatisticDaoMongoNativeImpl implements StatisticDao{
     }
 
     private MongoCollection getCollection() {
-        MongoDatabase db = mongoClientProvider.get().getDatabase(mongoClientProvider.get().getDatabaseName());
-        return db.getCollection(mongoClientProvider.get().getCollectionName());
+        MongoDatabase db = mongoClientProvider.get().getDatabase(database);
+        return db.getCollection(collection);
     }
 
 }

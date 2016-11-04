@@ -10,18 +10,25 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import com.softserveinc.reviewer.config.MongoClientProvider;
+import com.mongodb.MongoClient;
+import com.softserveinc.reviewer.annotation.Collection;
+import com.softserveinc.reviewer.annotation.Database;
 import com.softserveinc.reviewer.model.Statistic;
 import org.mongojack.DBCursor;
 import org.mongojack.DBQuery;
 import org.mongojack.JacksonDBCollection;
 
 public class StatisticDaoMongoJackImpl implements StatisticDao {
-    private final Provider<MongoClientProvider> mongoClientProvider;
+    private final Provider<MongoClient> mongoClientProvider;
+    private final String database;
+    private final String collection;
 
     @Inject
-    public StatisticDaoMongoJackImpl(Provider<MongoClientProvider> mongoClientProvider) {
+    public StatisticDaoMongoJackImpl(Provider<MongoClient> mongoClientProvider, @Database String database,
+            @Collection String collection) {
         this.mongoClientProvider = mongoClientProvider;
+        this.database = database;
+        this.collection = collection;
     }
 
     @Override
@@ -56,8 +63,8 @@ public class StatisticDaoMongoJackImpl implements StatisticDao {
     }
 
     private DBCollection getCollection() {
-        DB db = mongoClientProvider.get().getDB(mongoClientProvider.get().getDatabaseName());
-        return db.getCollection(mongoClientProvider.get().getCollectionName());
+        DB db = mongoClientProvider.get().getDB(database);
+        return db.getCollection(collection);
     }
 
     private JacksonDBCollection<Statistic, String> getWrappedCollection() {
