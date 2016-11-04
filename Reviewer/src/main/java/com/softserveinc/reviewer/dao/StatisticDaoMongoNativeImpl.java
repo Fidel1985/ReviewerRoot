@@ -9,8 +9,8 @@ import com.google.inject.Provider;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.softserveinc.reviewer.annotation.Collection;
-import com.softserveinc.reviewer.annotation.Database;
+import com.softserveinc.reviewer.annotation.StatsCollection;
+import com.softserveinc.reviewer.annotation.TestDatabase;
 import com.softserveinc.reviewer.model.Statistic;
 import org.bson.BsonDocument;
 import org.bson.Document;
@@ -19,19 +19,19 @@ import org.bson.conversions.Bson;
 public class StatisticDaoMongoNativeImpl implements StatisticDao{
     private final Provider<MongoClient> mongoClientProvider;
     private final String database;
-    private final String collection;
+    private final String statsCollection;
 
     @Inject
-    public StatisticDaoMongoNativeImpl(Provider<MongoClient> mongoClientProvider, @Database String database,
-            @Collection String collection) {
+    public StatisticDaoMongoNativeImpl(Provider<MongoClient> mongoClientProvider, @TestDatabase String database,
+            @StatsCollection String statsCollection) {
         this.mongoClientProvider = mongoClientProvider;
         this.database = database;
-        this.collection = collection;
+        this.statsCollection = statsCollection;
     }
 
     @Override
     public Statistic getOneByMethodName(String methodName) {
-        MongoCollection collection = getCollection();
+        MongoCollection collection = getStatsCollection();
         ObjectMapper mapper = new ObjectMapper();
         Object object = collection.find(eq("name", methodName)).first();
         return mapper.convertValue(object, Statistic.class);
@@ -39,7 +39,7 @@ public class StatisticDaoMongoNativeImpl implements StatisticDao{
 
     @Override
     public Statistic create(Statistic statistic) {
-        MongoCollection collection = getCollection();
+        MongoCollection collection = getStatsCollection();
         ObjectMapper mapper = new ObjectMapper();
         try {
             String userJson = mapper.writeValueAsString(statistic);
@@ -53,7 +53,7 @@ public class StatisticDaoMongoNativeImpl implements StatisticDao{
 
     @Override
     public Statistic update(Statistic statistic) {
-        MongoCollection collection = getCollection();
+        MongoCollection collection = getStatsCollection();
         ObjectMapper mapper = new ObjectMapper();
         try {
             String userJson = mapper.writeValueAsString(statistic);
@@ -66,9 +66,9 @@ public class StatisticDaoMongoNativeImpl implements StatisticDao{
         }
     }
 
-    private MongoCollection getCollection() {
+    private MongoCollection getStatsCollection() {
         MongoDatabase db = mongoClientProvider.get().getDatabase(database);
-        return db.getCollection(collection);
+        return db.getCollection(statsCollection);
     }
 
 }

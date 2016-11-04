@@ -11,8 +11,8 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
-import com.softserveinc.reviewer.annotation.Collection;
-import com.softserveinc.reviewer.annotation.Database;
+import com.softserveinc.reviewer.annotation.StatsCollection;
+import com.softserveinc.reviewer.annotation.TestDatabase;
 import com.softserveinc.reviewer.model.Statistic;
 import org.mongojack.DBCursor;
 import org.mongojack.DBQuery;
@@ -21,14 +21,14 @@ import org.mongojack.JacksonDBCollection;
 public class StatisticDaoMongoJackImpl implements StatisticDao {
     private final Provider<MongoClient> mongoClientProvider;
     private final String database;
-    private final String collection;
+    private final String statsCollection;
 
     @Inject
-    public StatisticDaoMongoJackImpl(Provider<MongoClient> mongoClientProvider, @Database String database,
-            @Collection String collection) {
+    public StatisticDaoMongoJackImpl(Provider<MongoClient> mongoClientProvider, @TestDatabase String database,
+            @StatsCollection String statsCollection) {
         this.mongoClientProvider = mongoClientProvider;
         this.database = database;
-        this.collection = collection;
+        this.statsCollection = statsCollection;
     }
 
     @Override
@@ -62,12 +62,12 @@ public class StatisticDaoMongoJackImpl implements StatisticDao {
         return statistic;
     }
 
-    private DBCollection getCollection() {
+    private DBCollection getStatsCollection() {
         DB db = mongoClientProvider.get().getDB(database);
-        return db.getCollection(collection);
+        return db.getCollection(statsCollection);
     }
 
     private JacksonDBCollection<Statistic, String> getWrappedCollection() {
-        return JacksonDBCollection.wrap(getCollection(), Statistic.class, String.class);
+        return JacksonDBCollection.wrap(getStatsCollection(), Statistic.class, String.class);
     }
 }

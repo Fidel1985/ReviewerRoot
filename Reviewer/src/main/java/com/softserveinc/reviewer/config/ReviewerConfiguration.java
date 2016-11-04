@@ -10,7 +10,7 @@ import lombok.Getter;
 public class ReviewerConfiguration extends Configuration {
     @NotNull
     @Valid
-    private DatabaseConfiguration database;
+    private MongoConfiguration mongo;
     @NotNull
     private String syndicationHealthCheckUrl;
     @NotNull

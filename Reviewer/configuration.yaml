@@ -18,8 +18,8 @@ elasticSearchHealthCheckUrl: http://localhost:8085/healthcheck
 elasticSearchBaseUrl: http://localhost:8084
 elasticSearchUri: /explore
 
-database:
+mongo:
   host: localhost
   port: 27017
-  name: test
-  collection: collection
+  database: test
+  statsCollection: statistic

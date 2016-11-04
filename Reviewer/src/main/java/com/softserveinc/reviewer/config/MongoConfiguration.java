@@ -5,15 +5,15 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 
 @Getter
-public class DatabaseConfiguration {
+public class MongoConfiguration {
 
     @NotNull
     private String host;
     @NotNull
     private int port;
     @NotNull
-    private String name;
+    private String database;
     @NotNull
-    private String collection;
+    private String statsCollection;
 
 }
