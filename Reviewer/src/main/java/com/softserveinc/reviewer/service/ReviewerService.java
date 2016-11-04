@@ -11,14 +11,12 @@ import com.softserveinc.reviewer.model.Syndication;
 import com.softserveinc.reviewer.model.ReviewResult;
 
 public class ReviewerService {
-
     private final SyndicationService syndicationService;
     private final OracleService oracleService;
     private final ElasticSearchService elasticSearchService;
 
     @Inject
-    public ReviewerService(SyndicationService syndicationService, OracleService oracleService,
-            ElasticSearchService elasticSearchService) {
+    public ReviewerService(SyndicationService syndicationService, OracleService oracleService, ElasticSearchService elasticSearchService) {
         this.syndicationService = syndicationService;
         this.oracleService = oracleService;
         this.elasticSearchService = elasticSearchService;

@@ -2,6 +2,7 @@ package com.softserveinc.reviewer;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.softserveinc.reviewer.config.ReviewerConfiguration;
 import com.softserveinc.reviewer.health.DataProvidersHealthCheck;
 import com.softserveinc.reviewer.injector.GuiceModule;
 import com.softserveinc.reviewer.resources.ReviewerResource;

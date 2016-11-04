@@ -17,3 +17,9 @@ oracleUri: /product/%s/%s/sources
 elasticSearchHealthCheckUrl: http://localhost:8085/healthcheck
 elasticSearchBaseUrl: http://localhost:8084
 elasticSearchUri: /explore
+
+mongo:
+  host: localhost
+  port: 27017
+  database: test
+  statsCollection: statistic
