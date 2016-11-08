@@ -14,8 +14,8 @@ import com.softserveinc.reviewer.annotation.ElasticSearchBaseUrl;
 import com.softserveinc.reviewer.annotation.ElasticSearchUri;
 import com.softserveinc.reviewer.annotation.OracleBaseUrl;
 import com.softserveinc.reviewer.annotation.OracleUri;
-import com.softserveinc.reviewer.annotation.SyndicationBaseUrl;
-import com.softserveinc.reviewer.annotation.SyndicationUri;
+import com.softserveinc.reviewer.annotation.SwitchBoardBaseUrl;
+import com.softserveinc.reviewer.annotation.SwitchBoardUri;
 import com.softserveinc.reviewer.dao.StatisticDao;
 import com.softserveinc.reviewer.dao.StatisticDaoMongoNativeImpl;
 import com.softserveinc.reviewer.interceptor.LoggingInterceptor;
@@ -41,8 +41,8 @@ public class GuiceModule extends AbstractModule {
         bindConstant().annotatedWith(ElasticSearchUri.class).to(configuration.getElasticSearchUri());
         bindConstant().annotatedWith(OracleBaseUrl.class).to(configuration.getOracleBaseUrl());
         bindConstant().annotatedWith(OracleUri.class).to(configuration.getOracleUri());
-        bindConstant().annotatedWith(SyndicationBaseUrl.class).to(configuration.getSyndicationBaseUrl());
-        bindConstant().annotatedWith(SyndicationUri.class).to(configuration.getSyndicationUri());
+        bindConstant().annotatedWith(SwitchBoardBaseUrl.class).to(configuration.getSwitchBoardBaseUrl());
+        bindConstant().annotatedWith(SwitchBoardUri.class).to(configuration.getSwitchBoardUri());
         bindConstant().annotatedWith(DatabaseName.class).to(configuration.getMongo().getDatabase());
         bindConstant().annotatedWith(StatsCollection.class).to(configuration.getMongo().getStatsCollection());
     }

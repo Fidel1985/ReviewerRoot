@@ -10,24 +10,24 @@ import java.util.List;
 import com.google.inject.Inject;
 import com.softserveinc.reviewer.model.Syndication;
 import com.softserveinc.reviewer.response.SyndicationResponse;
-import com.softserveinc.reviewer.annotation.SyndicationBaseUrl;
-import com.softserveinc.reviewer.annotation.SyndicationUri;
+import com.softserveinc.reviewer.annotation.SwitchBoardBaseUrl;
+import com.softserveinc.reviewer.annotation.SwitchBoardUri;
 import org.glassfish.jersey.client.JerseyClient;
 
-public class SyndicationService {
+public class SwitchBoardService {
     private final JerseyClient client;
-    private final String syndicationBaseUrl;
-    private final String syndicationUri;
+    private final String switchBoardBaseUrl;
+    private final String switchBoardUri;
 
     @Inject
-    public SyndicationService(JerseyClient client, @SyndicationBaseUrl String syndicationBaseUrl, @SyndicationUri String syndicationUri) {
+    public SwitchBoardService(JerseyClient client, @SwitchBoardBaseUrl String switchBoardBaseUrl, @SwitchBoardUri String switchBoardUri) {
         this.client = client;
-        this.syndicationBaseUrl = syndicationBaseUrl;
-        this.syndicationUri = syndicationUri;
+        this.switchBoardBaseUrl = switchBoardBaseUrl;
+        this.switchBoardUri = switchBoardUri;
     }
 
     public List<Syndication> getSources(String destinationClient) {
-        WebTarget webTarget = client.target(syndicationBaseUrl).path(syndicationUri).path(destinationClient);
+        WebTarget webTarget = client.target(switchBoardBaseUrl).path(switchBoardUri).path(destinationClient);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
         SyndicationResponse syndicationResponse = response.readEntity(SyndicationResponse.class);

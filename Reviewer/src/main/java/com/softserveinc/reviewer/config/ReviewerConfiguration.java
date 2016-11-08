@@ -12,11 +12,11 @@ public class ReviewerConfiguration extends Configuration {
     @Valid
     private MongoConfiguration mongo;
     @NotNull
-    private String syndicationHealthCheckUrl;
+    private String switchBoardHealthCheckUrl;
     @NotNull
-    private String syndicationBaseUrl;
+    private String switchBoardBaseUrl;
     @NotNull
-    private String syndicationUri;
+    private String switchBoardUri;
     @NotNull
     private String oracleHealthCheckUrl;
     @NotNull

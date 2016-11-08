@@ -27,7 +27,7 @@ public class ReviewerServiceTest {
     private ReviewerService reviewerService;
 
     @Mock
-    private SyndicationService syndicationService;
+    private SwitchBoardService syndicationService;
 
     @Mock
     private OracleService oracleService;

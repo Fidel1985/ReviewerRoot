@@ -11,20 +11,20 @@ import com.softserveinc.reviewer.model.Syndication;
 import com.softserveinc.reviewer.model.ReviewResult;
 
 public class ReviewerService {
-    private final SyndicationService syndicationService;
+    private final SwitchBoardService switchBoardService;
     private final OracleService oracleService;
     private final ElasticSearchService elasticSearchService;
 
     @Inject
-    public ReviewerService(SyndicationService syndicationService, OracleService oracleService, ElasticSearchService elasticSearchService) {
-        this.syndicationService = syndicationService;
+    public ReviewerService(SwitchBoardService switchBoardService, OracleService oracleService, ElasticSearchService elasticSearchService) {
+        this.switchBoardService = switchBoardService;
         this.oracleService = oracleService;
         this.elasticSearchService = elasticSearchService;
     }
 
     public ReviewResult getSyndicationMatches(String client, String externalId) {
 
-        List<Syndication> syndications = syndicationService.getSources(client);
+        List<Syndication> syndications = switchBoardService.getSources(client);
         List<String> sourceClients = syndications.stream().map(Syndication::getSourceClient).collect(Collectors.toList());
 
         List<Product> products = oracleService.getSourceMatches(client, externalId);
