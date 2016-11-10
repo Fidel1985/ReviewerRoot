@@ -15,5 +15,5 @@ hs_err_pid*
 *.iml
 */target/**
 */dependency-reduced-pom.xml
-*/**/scripts.min.js
-*/node_modules
+*/**/*.min.js
+*/**/node_modules
