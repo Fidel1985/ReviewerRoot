@@ -1,8 +1,12 @@
-import React from "react";
+import React from "react/lib/React";
+import FormGroup from "react-bootstrap/lib/FormGroup";
+import InputGroup from "react-bootstrap/lib/InputGroup";
+import FormControl from "react-bootstrap/lib/FormControl";
+import Button from "react-bootstrap/lib/Button";
 
 export default class SearchCriteriaForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       client: "",
       product: "",
@@ -22,20 +26,36 @@ export default class SearchCriteriaForm extends React.Component {
   }
 
   handleSubmit(event) {
-    var theClientVal = this.refs.clientInput.value;
-    var theProductVal = this.refs.productInput.value;
+    var theClientVal = this.refs.clientInput.props.value;
+    var theProductVal = this.refs.productInput.props.value;
     this.props.onUpdate(theClientVal, theProductVal);
     event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        Select search criteria:
-        <input type="text" ref="clientInput" value={this.state.client} onChange={this.handleClientChange} />
-        <input type="text" ref="productInput" value={this.state.product} onChange={this.handleProductChange} />
-        <input type="submit" value="Submit" />
-      </form>
+      <div class="container">
+        <form>
+          <FormGroup>
+            <div class="col-md-3">
+              <h4>Select search criteria:</h4>
+            </div>
+            <div class="col-md-8">
+              <InputGroup>
+                <InputGroup.Addon>client</InputGroup.Addon>
+                <FormControl type="text" ref="clientInput" value={this.state.client}
+                             onChange={this.handleClientChange}/>
+                <InputGroup.Addon>product</InputGroup.Addon>
+                <FormControl type="text" ref="productInput" value={this.state.product}
+                             onChange={this.handleProductChange}/>
+                <InputGroup.Button>
+                  <Button onClick={this.handleSubmit}>Search</Button>
+                </InputGroup.Button>
+              </InputGroup>
+            </div>
+          </FormGroup>
+        </form>
+      </div>
     );
   }
 }

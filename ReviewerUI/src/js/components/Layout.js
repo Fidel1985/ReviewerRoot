@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react/lib/React";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -20,7 +20,7 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="container">
         <Header />
         <SearchCriteriaForm onUpdate={this.handleResult.bind(this)} />
         <SearchResultsForm client={this.state.client} product={this.state.product} />
