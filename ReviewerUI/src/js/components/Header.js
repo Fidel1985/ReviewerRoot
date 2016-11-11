@@ -6,7 +6,6 @@ export default class Header extends React.Component {
     return (
       <div>
         <h1>Board Of Syndication Statistics</h1>
-        {/*<input value={this.props.title} onChange={this.handleChange.bind(this)} />*/}
       </div>
     );
   }

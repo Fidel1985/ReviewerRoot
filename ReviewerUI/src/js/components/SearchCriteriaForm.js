@@ -22,7 +22,9 @@ export default class SearchCriteriaForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('search criteria was submitted: ' + 'client ' + this.state.client + ' product ' + this.state.client);
+    var theClientVal = this.refs.clientInput.value;
+    var theProductVal = this.refs.productInput.value;
+    this.props.onUpdate(theClientVal, theProductVal);
     event.preventDefault();
   }
 
@@ -30,8 +32,8 @@ export default class SearchCriteriaForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         Select search criteria:
-        <input type="text" value={this.state.client} onChange={this.handleClientChange} />
-        <input type="text" value={this.state.product} onChange={this.handleProductChange} />
+        <input type="text" ref="clientInput" value={this.state.client} onChange={this.handleClientChange} />
+        <input type="text" ref="productInput" value={this.state.product} onChange={this.handleProductChange} />
         <input type="submit" value="Submit" />
       </form>
     );

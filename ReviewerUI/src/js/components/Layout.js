@@ -9,20 +9,21 @@ export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: "Welcome",
+      client: "Default client!",
+      product: "Default product!"
     };
   }
 
-  changeTitle(title) {
-    this.setState({title});
+  handleResult(client, product) {
+    this.setState({client, product});
   }
 
   render() {
     return (
       <div>
         <Header />
-        <SearchCriteriaForm />
-        <SearchResultsForm />
+        <SearchCriteriaForm onUpdate={this.handleResult.bind(this)} />
+        <SearchResultsForm client={this.state.client} product={this.state.product} />
         {/*<Footer />*/}
       </div>
     );
