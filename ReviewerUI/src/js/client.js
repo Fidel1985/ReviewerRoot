@@ -1,5 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react/lib/React";
+import ReactDOM from "react/lib/ReactDOM";
+require("./../css/styles.less");
 
 import Layout from "./components/Layout";
 
