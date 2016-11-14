@@ -1,6 +1,5 @@
 import React from "react/lib/React";
 
-import Footer from "./Footer";
 import Header from "./Header";
 import SearchCriteriaForm from "./SearchCriteriaForm";
 import SearchResultsForm from "./SearchResultsForm";
@@ -9,8 +8,8 @@ export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      client: "Default client!",
-      product: "Default product!"
+      client: "table-next",
+      product: "metal-table"
     };
   }
 
@@ -24,7 +23,6 @@ export default class Layout extends React.Component {
         <Header />
         <SearchCriteriaForm onUpdate={this.handleResult.bind(this)} />
         <SearchResultsForm client={this.state.client} product={this.state.product} />
-        {/*<Footer />*/}
       </div>
     );
   }
