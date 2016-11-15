@@ -18,11 +18,15 @@ export default class SearchCriteriaForm extends React.Component {
   }
 
   handleClientChange(event) {
-    this.setState({client: event.target.value});
+    if (event.target) {
+      this.setState({client: event.target.value,});
+    }
   }
 
   handleProductChange(event) {
-    this.setState({product: event.target.value});
+    if (event.target) {
+      this.setState({product: event.target.value});
+    }
   }
 
   handleSubmit(event) {
@@ -34,13 +38,13 @@ export default class SearchCriteriaForm extends React.Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <form>
           <FormGroup>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <h4>Select search criteria:</h4>
             </div>
-            <div class="col-md-8">
+            <div className="col-md-8">
               <InputGroup>
                 <InputGroup.Addon>client</InputGroup.Addon>
                 <FormControl type="text" ref="clientInput" value={this.state.client}
