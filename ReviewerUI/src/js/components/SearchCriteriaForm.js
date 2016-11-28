@@ -4,7 +4,19 @@ import InputGroup from "react-bootstrap/lib/InputGroup";
 import FormControl from "react-bootstrap/lib/FormControl";
 import Button from "react-bootstrap/lib/Button";
 
-import SearchResultsForm from "./SearchResultsForm";
+function Result(props) {
+    return (
+        <div>
+          <div className="container" id="outer-block">
+            <h4>Results</h4>
+            <div id="inner-block">
+              <div><h4>client: {props.client}</h4></div>
+              <div><h4>product: {props.product}</h4></div>
+            </div>
+          </div>
+        </div>
+    )
+}
 
 export default class SearchCriteriaForm extends React.Component {
   constructor() {
@@ -62,7 +74,9 @@ export default class SearchCriteriaForm extends React.Component {
             </FormGroup>
           </form>
         </div>
-        <SearchResultsForm client={this.state.childClient} product={this.state.childProduct}/>
+          { this.state.childClient !="" && this.state.childProduct !="" &&
+            <Result client={this.state.childClient} product={this.state.childProduct} />
+          }
       </div>
     );
   }
