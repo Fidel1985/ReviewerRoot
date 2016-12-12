@@ -1,26 +1,14 @@
 import React from "react/lib/React";
+
 import FormGroup from "react-bootstrap/lib/FormGroup";
 import InputGroup from "react-bootstrap/lib/InputGroup";
 import FormControl from "react-bootstrap/lib/FormControl";
 import Button from "react-bootstrap/lib/Button";
+
 import * as Actions from "../actions/Actions";
 import DataStore from "../stores/DataStore";
 
-function Result(props) {
-  return (
-    <div>
-      <div className="container" id="outer-block">
-        <h4>Results</h4>
-        <div id="inner-block">
-          <div><h4>client: {props.client}</h4></div>
-          <div><h4>product: {props.externalId}</h4></div>
-          <div><h4>native: {props.native}</h4></div>
-          <div><h4>syndicated: {props.syndicated}</h4></div>
-        </div>
-      </div>
-    </div>
-  )
-}
+import Result from "./Result";
 
 export default class SearchCriteriaForm extends React.Component {
   constructor() {
@@ -29,22 +17,6 @@ export default class SearchCriteriaForm extends React.Component {
     this.state = {
       data: DataStore.getAll()
     };
-  }
-
-  handleClientChange(event) {
-    if (event.target) {
-      Actions.handleClientChange(event.target.value);
-      //this.getData();
-      //this.setState({client: event.target.value});
-    }
-  }
-
-  handleProductChange(event) {
-    if (event.target) {
-      Actions.handleProductChange(event.target.value);
-      //this.getData();
-      //this.setState({product: event.target.value});
-    }
   }
 
   componentWillMount() {
@@ -61,12 +33,22 @@ export default class SearchCriteriaForm extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  handleClientChange(event) {
+    if (event.target) {
+      Actions.handleClientChange(event.target.value);
+    }
+  }
+
+  handleProductChange(event) {
+    if (event.target) {
+      Actions.handleProductChange(event.target.value);
+    }
+  }
+
+  handleSubmit() {
     var theClientVal = this.refs.clientInput.props.value;
     var theProductVal = this.refs.productInput.props.value;
-
-    Actions.loadData();
-    event.preventDefault();
+    Actions.loadData(theClientVal, theProductVal);
   }
 
   render() {
@@ -94,11 +76,11 @@ export default class SearchCriteriaForm extends React.Component {
             </FormGroup>
           </form>
         </div>
-          { this.state.data.native !=0 && this.state.data.syndicated !=0 &&
-            <Result client={this.state.data.client} externalId={this.state.data.externalId}
-                    native={this.state.data.native} syndicated={this.state.data.syndicated}
-            />
-          }
+        {this.state.data.show == true &&
+        <Result client={this.state.data.client} externalId={this.state.data.externalId}
+                native={this.state.data.native} syndicated={this.state.data.syndicated}
+        />
+        }
       </div>
     );
   }

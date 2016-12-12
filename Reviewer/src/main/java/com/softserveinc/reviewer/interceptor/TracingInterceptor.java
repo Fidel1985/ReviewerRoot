@@ -20,7 +20,7 @@ public class TracingInterceptor implements MethodInterceptor {
             return invocation.proceed();
         } finally {
             long duration = System.currentTimeMillis() - start;
-            //statisticService.saveStats(duration, invocation.getMethod().getName());
+            statisticService.saveStats(duration, invocation.getMethod().getName());
             LOG.info(String.format("Invocation of method %s took %d ms.",
                     invocation.getMethod().getName(), duration));
         }

@@ -5,7 +5,13 @@ import dispatcher from "../dispatcher";
 class DataStore extends EventEmitter {
   constructor() {
     super();
-    this.data = {client: '', externalId: '', native: 0, syndicated: 0};
+    this.data = {
+      client: '',
+      externalId: '',
+      native: -1,
+      syndicated: -1,
+      show: false
+    };
   }
 
   getAll() {
@@ -21,11 +27,13 @@ class DataStore extends EventEmitter {
       }
       case "HANDLE_CLIENT_DATA": {
         this.data.client = action.client;
+        this.data.show = false;
         this.emit("change");
         break;
       }
       case "HANDLE_PRODUCT_DATA": {
         this.data.externalId = action.externalId;
+        this.data.show = false;
         this.emit("change");
         break;
       }
