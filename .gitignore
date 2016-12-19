@@ -15,5 +15,5 @@ hs_err_pid*
 *.iml
 */target/**
 
-*/**/*.min.js
-*/**/node_modules
+*.min.js
+node_modules
