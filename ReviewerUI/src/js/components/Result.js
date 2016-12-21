@@ -1,4 +1,4 @@
-import React from "react/lib/React";
+import React from "react";
 
 export default function Result(props) {
   return (

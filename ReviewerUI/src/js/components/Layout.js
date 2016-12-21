@@ -1,4 +1,4 @@
-import React from "react/lib/React";
+import React from "react";
 
 import Header from "./Header";
 import SearchCriteriaForm from "./SearchCriteriaForm";
